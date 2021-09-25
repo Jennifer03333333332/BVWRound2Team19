@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Torch
+  - ChimesRange
+  - ChimesBell
   layers:
   - Default
   - TransparentFX
