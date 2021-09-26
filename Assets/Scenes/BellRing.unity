@@ -1098,15 +1098,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound_List:
-  - audioClip: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: fd683e042e8cca248b8ec2a5cda335f2, type: 3}
     soundName: Gong
-  - audioClip: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 68f7c984c98b71244a3cd0c3ec552710, type: 3}
     soundName: Shang
-  - audioClip: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 1ae149fe9448da4468e598af9565c99b, type: 3}
     soundName: Jue
-  - audioClip: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 2222a605ffb3be0468e6d90453caed50, type: 3}
     soundName: Zhi
-  - audioClip: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 85f2f7eaf34d66a4a98dffff6562dc1f, type: 3}
     soundName: Yu
 --- !u!4 &1132930610
 Transform:

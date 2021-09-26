@@ -99,6 +99,7 @@ public class ChimesGroup : MonoBehaviour
         if (checkIfStepCorrect)
         {
             print(MusicOrder[currentStep]  + " " + currentAction);
+            //Wrong bell
             if (currentAction != MusicOrder[currentStep])
             {
                 checkIfStepCorrect = false;
