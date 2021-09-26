@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ChimesGroup : MonoBehaviour
 {
+    [SerializeField]
     public static ChimesGroup instance;
-    //public int[] BellMusicArray;
     public int[] MusicOrder;
-    //public ChimesBell[] ChimesBellsArray;
 
     //Manage Players action
 
@@ -15,7 +14,14 @@ public class ChimesGroup : MonoBehaviour
     public int currentAction;
     public int stepsCount;
     public bool checkIfStepCorrect;
+    [Header("Bells Time")]
     public int whenErrorWaitInterval;
+    public int ShowHintsWaitInterval;
+
+    public enum BellPuzzleStatus { Enter, Step1, planeAni, cutscene2, babyAni, cutscene3, battle, end };
+    public static BellPuzzleStatus gameStatus = BellPuzzleStatus.Enter;
+
+    private GameObject RingStick;
     void Awake()
     {
         instance = this;
@@ -23,16 +29,22 @@ public class ChimesGroup : MonoBehaviour
     private void Start()
     {
         BuildRandomMusicOrder();
-        //int index = 0;
-        //foreach (ChimesBell bell in gameObject.GetComponentsInChildren<ChimesBell>())
-        //{
-        //    BellMusicArray[index] = bell.ToneID;
-        //    index++;
-        //}
         currentStep = 0;
         stepsCount = 3;
+        RingStick = GameObject.FindGameObjectWithTag("RingStick");
+        StartCoroutine("WaitForTest");
+        //TestField
+        //WhenPlayerEntered();
 
-        WhenPlayerEntered();
+    }
+    
+
+
+    IEnumerator WaitForTest()
+    {
+        yield return new WaitForSeconds(2);
+        //Test code
+        //SolvedBellPuzzle();
     }
     //When entered, player picked up the ringstick
     //Play the Hint Music
@@ -49,30 +61,36 @@ public class ChimesGroup : MonoBehaviour
             print(a);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //WhenPlayerEntered();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            WhenPlayerEntered(other.gameObject);
+        }
     }
 
-
-    public void WhenPlayerEntered()
+    //1
+    public void WhenPlayerEntered(GameObject player)
     {
-        //if (collision.collider.CompareTag("Player"))
-        //{
         //Change animation. Player pickes up the ringing-stick on the boat
-
+        
         //Play the Hint Music
-        PlayHintMucis();
-
+        StartCoroutine("PlayHintMucis");
         //start detect
         StartCoroutine("BeginKnockBell");
-        //}
     }
-    public void PlayHintMucis() { 
-        //Play sounds in Order BellMusicArray
+    IEnumerator PlayHintMucis() {
+        //Play sounds in the order of BellMusicArray
+        print(MusicOrder);
+        foreach(var i in MusicOrder)
+        {
+            //print(GlobalUtility.IndexToToneName(i));
+            SoundManager.instance.PlayingSound(GlobalUtility.IndexToToneName(i));
+            yield return new WaitForSeconds(ShowHintsWaitInterval);
+        }
     }
 
-
+    //2
     IEnumerator BeginKnockBell()
     {
         print("BeginKnockBell");
@@ -82,23 +100,23 @@ public class ChimesGroup : MonoBehaviour
             yield return StartCoroutine("EachStep");
             currentStep++;
         }
-        print("Bell Puzzle solves");
-
+        SolvedBellPuzzle();
         yield return null;
     }
+    //3
     IEnumerator EachStep()
     {
         print("wait for " + currentStep);
         yield return new WaitUntil(() => Check() == true);
-        print("Do This Step Successfully");
+        print("Do Step "+ currentStep + " Successfully");
         yield return null;
     }
-
+    //4
     private bool Check()
     {
         if (checkIfStepCorrect)
         {
-            print(MusicOrder[currentStep]  + " " + currentAction);
+            print("Need "+MusicOrder[currentStep]  + " , you choose " + currentAction);
             //Wrong bell
             if (currentAction != MusicOrder[currentStep])
             {
@@ -108,24 +126,37 @@ public class ChimesGroup : MonoBehaviour
                 
                 return false;
             }
+            //Right Bell
             checkIfStepCorrect = false;
             return true;
         }
+        //Haven't took action
         return false;
     }
-
+    //Bad end
     IEnumerator ErrorStep()
     {
         print("error");
         StopCoroutine("BeginKnockBell");
         //effects
+
+        //Wrong Sounds
+
+
         //StartCoroutine()
         yield return new WaitForSeconds(whenErrorWaitInterval);
         //start again
         StartCoroutine("BeginKnockBell");
         
     }
+    //Good end
+    public void SolvedBellPuzzle()
+    {
+        print("Bell Puzzle solved");
+        //Music
 
-
+        //Absorb the particles
+        gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
+    }
 
 }

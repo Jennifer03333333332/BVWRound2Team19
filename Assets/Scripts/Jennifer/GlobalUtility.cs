@@ -18,4 +18,19 @@ public class GlobalUtility : MonoBehaviour
 
         return resultArr;
     }
+
+
+    //Only for this proj
+    //01234 - toneName
+    public static string IndexToToneName(int index)
+    {
+        string res = "Gong";
+        if (index == 0) res = "Gong";
+        else if (index == 1) res = "Shang";
+        else if (index == 2) res = "Jue";
+        else if (index == 3) res = "Zhi";
+        else if (index == 4) res = "Yu";
+        else { print("Wrong IndexToToneName"); }
+        return res;
+    }
 }
