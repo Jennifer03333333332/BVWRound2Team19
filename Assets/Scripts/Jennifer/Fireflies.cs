@@ -46,7 +46,7 @@ public class Fireflies : MonoBehaviour
 
         for (int i = 0; i < numCollisionEvents; i++)
         {
-            Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
+            //Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
         }
     }
 }

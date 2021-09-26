@@ -27,7 +27,7 @@ public class ChimesBell : MonoBehaviour
             //print(ToneID);
             //might be Thread insecure
             gameObject.GetComponentInParent<ChimesGroup>().currentAction = ToneID;
-            gameObject.GetComponentInParent<ChimesGroup>().checkIfStepCorrect = true;
+            gameObject.GetComponentInParent<ChimesGroup>().StickHitTheBell = true;
 
             
         }
