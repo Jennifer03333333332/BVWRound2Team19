@@ -15,7 +15,10 @@ public class ChimesGroup : MonoBehaviour
     public int currentAction;
     public int stepsCount;
     public bool checkIfStepCorrect;
+    
     public int whenErrorWaitInterval;
+    public int ShowHintsWaitInterval;
+
     void Awake()
     {
         instance = this;
@@ -62,14 +65,22 @@ public class ChimesGroup : MonoBehaviour
         //Change animation. Player pickes up the ringing-stick on the boat
 
         //Play the Hint Music
-        PlayHintMucis();
 
+        StartCoroutine("PlayHintMucis");
         //start detect
         StartCoroutine("BeginKnockBell");
         //}
     }
-    public void PlayHintMucis() { 
-        //Play sounds in Order BellMusicArray
+    IEnumerator PlayHintMucis() {
+        //Play sounds in the order of BellMusicArray
+        print(MusicOrder);
+        print(1);
+        foreach(var i in MusicOrder)
+        {
+            //print(GlobalUtility.IndexToToneName(i));
+            SoundManager.instance.PlayingSound(GlobalUtility.IndexToToneName(i));
+            yield return new WaitForSeconds(ShowHintsWaitInterval);
+        }
     }
 
 
@@ -90,7 +101,7 @@ public class ChimesGroup : MonoBehaviour
     {
         print("wait for " + currentStep);
         yield return new WaitUntil(() => Check() == true);
-        print("Do This Step Successfully");
+        print("Do Step "+ currentStep + " Successfully");
         yield return null;
     }
 
@@ -98,7 +109,7 @@ public class ChimesGroup : MonoBehaviour
     {
         if (checkIfStepCorrect)
         {
-            print(MusicOrder[currentStep]  + " " + currentAction);
+            print("Need "+MusicOrder[currentStep]  + " , you choose " + currentAction);
             //Wrong bell
             if (currentAction != MusicOrder[currentStep])
             {
@@ -108,9 +119,11 @@ public class ChimesGroup : MonoBehaviour
                 
                 return false;
             }
+            //Right Bell
             checkIfStepCorrect = false;
             return true;
         }
+        //Haven't took action
         return false;
     }
 

@@ -15,27 +15,22 @@ public class ChimesBell : MonoBehaviour
         //isInCollision = false;
     }
     //
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
         //if (isInCollision) return;
         //print(collision.collider.gameObject.name);
-        if (collision.collider.gameObject.name == "RingStick")
+        if (other.gameObject.name == "RingStick")
         {
             //
             SoundManager.instance.PlayingSound(ToneName);
             //print(ToneID);
             //might be Thread insecure
-            if (!gameObject.GetComponentInParent<ChimesGroup>().checkIfStepCorrect)
-            {
-                gameObject.GetComponentInParent<ChimesGroup>().currentAction = ToneID;
-                gameObject.GetComponentInParent<ChimesGroup>().checkIfStepCorrect = true;
-            }
+            gameObject.GetComponentInParent<ChimesGroup>().currentAction = ToneID;
+            gameObject.GetComponentInParent<ChimesGroup>().checkIfStepCorrect = true;
+
             
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        //isInCollision = false;
-    }
 }
