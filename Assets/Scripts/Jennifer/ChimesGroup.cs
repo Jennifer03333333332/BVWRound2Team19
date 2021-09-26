@@ -21,6 +21,7 @@ public class ChimesGroup : MonoBehaviour
     public enum BellPuzzleStatus { Enter, Step1, planeAni, cutscene2, babyAni, cutscene3, battle, end };
     public static BellPuzzleStatus gameStatus = BellPuzzleStatus.Enter;
 
+    private GameObject RingStick;
     void Awake()
     {
         instance = this;
@@ -30,8 +31,20 @@ public class ChimesGroup : MonoBehaviour
         BuildRandomMusicOrder();
         currentStep = 0;
         stepsCount = 3;
-
+        RingStick = GameObject.FindGameObjectWithTag("RingStick");
+        StartCoroutine("WaitForTest");
+        //TestField
         //WhenPlayerEntered();
+
+    }
+    
+
+
+    IEnumerator WaitForTest()
+    {
+        yield return new WaitForSeconds(2);
+        //Test code
+        //SolvedBellPuzzle();
     }
     //When entered, player picked up the ringstick
     //Play the Hint Music
@@ -143,7 +156,7 @@ public class ChimesGroup : MonoBehaviour
         //Music
 
         //Absorb the particles
-
+        gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
     }
 
 }
