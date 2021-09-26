@@ -50,7 +50,7 @@ public class ChimesGroup : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         //Test code
-        //SolvedBellPuzzle();
+        SolvedBellPuzzle();
     }
     //When entered, player picked up the ringstick
     //Play the Hint Music
