@@ -35,7 +35,7 @@ public class ChimesGroup : MonoBehaviour
         currentStep = 0;
         stepsCount = 3;
 
-        WhenPlayerEntered();
+        //WhenPlayerEntered();
     }
     //When entered, player picked up the ringstick
     //Play the Hint Music
@@ -52,29 +52,27 @@ public class ChimesGroup : MonoBehaviour
             print(a);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //WhenPlayerEntered();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            WhenPlayerEntered(other.gameObject);
+        }
     }
 
 
-    public void WhenPlayerEntered()
+    public void WhenPlayerEntered(GameObject player)
     {
-        //if (collision.collider.CompareTag("Player"))
-        //{
         //Change animation. Player pickes up the ringing-stick on the boat
-
+        
         //Play the Hint Music
-
         StartCoroutine("PlayHintMucis");
         //start detect
         StartCoroutine("BeginKnockBell");
-        //}
     }
     IEnumerator PlayHintMucis() {
         //Play sounds in the order of BellMusicArray
         print(MusicOrder);
-        print(1);
         foreach(var i in MusicOrder)
         {
             //print(GlobalUtility.IndexToToneName(i));
