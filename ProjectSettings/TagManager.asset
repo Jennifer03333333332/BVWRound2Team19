@@ -7,6 +7,8 @@ TagManager:
   - Torch
   - ChimesRange
   - ChimesBell
+  - SpiritParticles
+  - RingStick
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Interact
   - 
   - 
   - 
