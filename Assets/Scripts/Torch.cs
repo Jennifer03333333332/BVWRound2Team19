@@ -26,7 +26,7 @@ public class Torch : MonoBehaviour
         {
             StartFire();
             gm.stage++;
-            gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle", "RingStick");
+            gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle", "Boat");
 
         }
     }
