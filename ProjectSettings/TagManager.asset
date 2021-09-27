@@ -9,6 +9,8 @@ TagManager:
   - ChimesBell
   - SpiritParticles
   - RingStick
+  - Water
+  - Boat
   layers:
   - Default
   - TransparentFX

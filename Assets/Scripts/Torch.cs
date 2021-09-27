@@ -6,11 +6,20 @@ public class Torch : MonoBehaviour
 {
     public bool ThisFireIsOn = false;
     public GameObject fire;
-
+    public float FireIntensity = 5f;
     
     public void StartFire()
     {
         ThisFireIsOn = true;
-        fire.GetComponent<Light>().intensity = 1.5f;
+        fire.GetComponent<Light>().intensity = FireIntensity;
+
+    }
+    
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.transform.tag == "Boat")
+        {
+            StartFire();
+        }
     }
 }
