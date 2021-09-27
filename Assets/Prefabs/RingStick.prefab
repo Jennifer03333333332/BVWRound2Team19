@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 234010550401404846}
   - component: {fileID: 234010550401404841}
   - component: {fileID: 234010550401404840}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RingStick
   m_TagString: RingStick
   m_Icon: {fileID: 0}
@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4, y: 0.1, z: 0.1}
+  m_Center: {x: 1, y: 0, z: 0}
 --- !u!54 &234010550401404840
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 234010551290211926}
   - component: {fileID: 234010551290211923}
   - component: {fileID: 234010551290211920}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 234010551290211927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 2, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 234010550401404846}
   m_RootOrder: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 2382210772783138728}
   - component: {fileID: 9130448741637798318}
   - component: {fileID: 463859572252624624}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4515960658819234354}
   - component: {fileID: 8499136602933315915}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
