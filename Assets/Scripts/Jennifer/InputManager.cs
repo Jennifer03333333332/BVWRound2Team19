@@ -43,6 +43,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue));
+        print(triggerValue);
         if (rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerValue) && triggerValue)
         {
             RingStick.SetActive(true);

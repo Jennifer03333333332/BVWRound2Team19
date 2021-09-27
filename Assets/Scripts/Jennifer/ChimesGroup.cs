@@ -77,7 +77,7 @@ public class ChimesGroup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print(other.gameObject.name);
-        if (other.gameObject.CompareTag("RingStick") && !startThePuzzle)
+        if (other.gameObject.CompareTag("MainCamera") && !startThePuzzle)
         {
             startThePuzzle = true;
             WhenPlayerEntered();
