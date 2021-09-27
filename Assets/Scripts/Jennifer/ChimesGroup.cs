@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,9 +23,14 @@ public class ChimesGroup : MonoBehaviour
     public enum BellPuzzleStatus { Enter, Step1, planeAni, cutscene2, babyAni, cutscene3, battle, end };
     public static BellPuzzleStatus gameStatus = BellPuzzleStatus.Enter;
 
+    //范围内的莲花灯
+    public List<GameObject> lotus = new List<GameObject>();
+
     private GameObject RingStick;
     private bool startThePuzzle;
     private int[] playerChoiceArr;
+
+    private GameManager gm;
     void Awake()
     {
         instance = this;
@@ -36,6 +41,7 @@ public class ChimesGroup : MonoBehaviour
         currentStep = 0;
         stepsCount = 3;
         startThePuzzle = false;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         BuildRandomMusicOrder();
         RingStick = GameObject.FindGameObjectWithTag("RingStick");
         StartCoroutine("WaitForTest");
@@ -204,7 +210,11 @@ public class ChimesGroup : MonoBehaviour
     {
         print("Bell Puzzle solved");
         //Music
-
+        foreach(var item in lotus)
+        {
+            item.GetComponent<Torch>().StartFire();
+        }
+        gm.stage++;
         //Absorb the particles
         gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
 
