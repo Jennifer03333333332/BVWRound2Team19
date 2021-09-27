@@ -647,7 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisFireIsOn: 0
   fire: {fileID: 7464874166516054102}
-  FireIntensity: 5
+  FireIntensity: 10
 --- !u!1 &3990526591859000449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,9 +1369,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8679245, g: 0.37824067, b: 0.25109762, a: 1}
+  m_Color: {r: 0.8666667, g: 0.47772035, b: 0.25098038, a: 1}
   m_Intensity: 0
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
