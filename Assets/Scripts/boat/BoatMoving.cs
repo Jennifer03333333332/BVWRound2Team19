@@ -45,7 +45,7 @@ public class BoatMoving : MonoBehaviour
     {
         //Gesture init
         planeNormal = new Vector3(1, 0, 0);
-        string[] gesturefile = Directory.GetFiles(Application.persistentDataPath, "*.xml");
+        string[] gesturefile = Directory.GetFiles(Application.dataPath+"/Gesture/", "*.xml");
         foreach(var gfile in gesturefile)
         {
             gesturesList.Add(GestureIO.ReadGestureFromFile(gfile));
@@ -235,7 +235,7 @@ public class BoatMoving : MonoBehaviour
             gesturesList.Add(newGesture);
 
             //string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
-            string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
+            string fileName = Application.dataPath + "/Gesture/" + newGestureName + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         }
         else
