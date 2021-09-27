@@ -10,6 +10,10 @@ public class ChimesBell : MonoBehaviour
     public String ToneName;
     private bool isInCollision;
 
+
+    public Material normalMaterial;
+    public Material CollideMaterial;
+
     private void Start()
     {
         //isInCollision = false;
@@ -29,8 +33,27 @@ public class ChimesBell : MonoBehaviour
             gameObject.GetComponentInParent<ChimesGroup>().currentAction = ToneID;
             gameObject.GetComponentInParent<ChimesGroup>().StickHitTheBell = true;
 
-            
+            //change material
+            Material[] materArr = gameObject.GetComponentsInChildren<Material>();
+            for (int i=0; i< materArr.Length; i++)
+            {
+                materArr[i] = CollideMaterial;
+            }
+
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "RingStick")
+        {
+            //change material
+            Material[] materArr = gameObject.GetComponentsInChildren<Material>();
+            for (int i = 0; i < materArr.Length; i++)
+            {
+                materArr[i] = normalMaterial;
+            }
+
+        }
+    }
 }
