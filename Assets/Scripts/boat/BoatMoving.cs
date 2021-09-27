@@ -36,6 +36,10 @@ public class BoatMoving : MonoBehaviour
     public bool LisPress = false;
     public List<Vector3> rightPositionList = new List<Vector3>();
     public List<Vector3> leftPositionList = new List<Vector3>();
+    //jennifer
+    private GameObject RingStick;
+    private bool rightTriggerValue;
+    //jennifer ends
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +65,11 @@ public class BoatMoving : MonoBehaviour
         {
             leftHand = leftdevices[0]; 
         }
-
+        //jennifer
+        RingStick = GameObject.FindGameObjectWithTag("RingStick");
+        RingStick.SetActive(false);
+        rightTriggerValue = false;
+        //jennifer ends
     }
 
     // Update is called once per frame
@@ -77,6 +85,22 @@ public class BoatMoving : MonoBehaviour
             //print("左手按下:" + lgb);
             LisPress = lgb;
         }
+        //jennifer
+        if (rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool test))
+        {
+            rightTriggerValue = test;
+            if (rightTriggerValue)
+            {
+                RingStick.SetActive(true);
+            }
+            else
+            {
+                RingStick.SetActive(false);
+            }
+        }
+        //Jennifer end
+
+
         ReversoRightT = rightT.position - rigT.position;
         ReversoLeftT = leftT.position - rigT.position;
         if(!RisMove && RisPress)
