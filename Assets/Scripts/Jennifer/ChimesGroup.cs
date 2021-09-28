@@ -194,6 +194,11 @@ public class ChimesGroup : MonoBehaviour
     public void ErrorStep()
     {
         print("error");
+
+        
+        SoundManager.instance.PlayingSound("PuzzleFailed"+ UnityEngine.Random.Range(1, 4));
+
+
         StopCoroutine("BeginKnockBell");
         //effects
 
@@ -217,7 +222,7 @@ public class ChimesGroup : MonoBehaviour
         gm.stage++;
         //Absorb the particles
         gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
-
+        SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
     }
 
 }
