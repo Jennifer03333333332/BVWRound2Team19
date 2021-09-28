@@ -13,17 +13,15 @@ public class ChimesGroup : MonoBehaviour
     public int currentStep;
     public int currentAction;
     public int stepsCount;
-    //public bool checkIfStepCorrect;
+
     public bool StickHitTheBell;
 
     [Header("Bells Time")]
     public int whenErrorWaitInterval;
     public int ShowHintsWaitInterval;
 
-    public enum BellPuzzleStatus { Enter, Step1, planeAni, cutscene2, babyAni, cutscene3, battle, end };
-    public static BellPuzzleStatus gameStatus = BellPuzzleStatus.Enter;
 
-    //范围内的莲花灯
+    //Lotus in Range
     public List<GameObject> lotus = new List<GameObject>();
 
     private GameObject RingStick;
