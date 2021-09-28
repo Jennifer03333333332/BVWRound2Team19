@@ -13,7 +13,8 @@ public class SoundManager : MonoBehaviour
     }
     public List<SoundGroup> sound_List = new List<SoundGroup>();
 
-    //public AudioSource PeaceBGM;
+    public AudioSource BGM1;
+    public AudioSource BGM2;
 
     public static SoundManager instance;
 
