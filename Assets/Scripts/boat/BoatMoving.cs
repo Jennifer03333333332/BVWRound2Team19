@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using PDollarGestureRecognizer;
 using System.IO;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class MyStringEvent : UnityEvent<string> { }
@@ -24,9 +25,10 @@ public class BoatMoving : MonoBehaviour
     private List<Gesture> gesturesList = new List<Gesture>();
     public float recordInterval = 0.05f;
     public float recognitionThreshold = 0.6f;
-
+    public Text debugText;
     
     public MyStringEvent onRecognized;
+    public GestureStore gestureStore;
 
     public bool creatMode = true;
     public string newGestureName;
@@ -46,10 +48,12 @@ public class BoatMoving : MonoBehaviour
         //Gesture init
         planeNormal = new Vector3(1, 0, 0);
         string[] gesturefile = Directory.GetFiles(Application.dataPath+"/Gesture/", "*.xml");
+        BuildGestureFromPosition();
         foreach(var gfile in gesturefile)
         {
             gesturesList.Add(GestureIO.ReadGestureFromFile(gfile));
         }
+        debugText.text = "手势列表长度:" + gesturesList.Count;
         //get Input device
         List<InputDevice> rightdevices = new List<InputDevice>();
         List<InputDevice> leftdevices = new List<InputDevice>();
@@ -136,17 +140,18 @@ public class BoatMoving : MonoBehaviour
     /// </summary>
     void RightStartMovement()
     {
-        Debug.Log("开始手动");
+        //Debug.Log("开始手动");
         rightPositionList.Clear();
         RisMove = true;
         rightPositionList.Add(ReversoRightT);
-
+        //gestureStore.GesturePositionList.Add(ReversoRightT);
         if (debugCubePrefab) Destroy(Instantiate(debugCubePrefab, ReversoRightT, Quaternion.identity), 3);
     }
     void RightEndMovement()
     {
-        Debug.Log("结束手动");
+        //Debug.Log("结束手动");
         RisMove = false;
+        Debug.Log(rightPositionList.Count);
         //创造手势
         Point[] pointArray = new Point[rightPositionList.Count];
         
@@ -175,9 +180,9 @@ public class BoatMoving : MonoBehaviour
         {
             Result result = PointCloudRecognizer.Classify(newGesture, gesturesList.ToArray());
             string movementName = result.GestureClass;
-            Debug.Log(result.GestureClass + "" + result.Score);
-            Debug.Log(movementName);
-            
+            //Debug.Log(result.GestureClass + "" + result.Score);
+            //Debug.Log(movementName);
+            debugText.text = result.GestureClass + "  :" + result.Score;
             if (result.Score > recognitionThreshold)
             {
                 onRecognized.Invoke("r");
@@ -186,24 +191,27 @@ public class BoatMoving : MonoBehaviour
     }
     void RightUpdateMovement()
     {
-        Debug.Log("正在手动");
+        //Debug.Log("正在手动");
         
         Vector3 latestPos = rightPositionList[rightPositionList.Count - 1];
         if(Vector3.Distance(latestPos, ReversoRightT) > recordInterval)
         {
             if (debugCubePrefab) Destroy(Instantiate(debugCubePrefab, ReversoRightT, Quaternion.identity), 1);
             rightPositionList.Add(ReversoRightT);
+            //debugText.text = "右手位置" + ReversoRightT.x + " " + ReversoRightT.y + " " + ReversoRightT.z + " ";
+            //gestureStore.GesturePositionList.Add(ReversoRightT);
         }
         
     }
 
+   
 
     /// <summary>
     /// RightHandMovement
     /// </summary>
     void LeftStartMovement()
     {
-        Debug.Log("开始手动");
+        //Debug.Log("开始手动");
         leftPositionList.Clear();
         LisMove = true;
         leftPositionList.Add(ReversoLeftT);
@@ -212,8 +220,9 @@ public class BoatMoving : MonoBehaviour
     }
     void leftEndMovement()
     {
-        Debug.Log("结束手动");
+        //Debug.Log("结束手动");
         LisMove = false;
+        Debug.Log(leftPositionList.Count);
         //创造手势
         Point[] pointArray = new Point[leftPositionList.Count];
 
@@ -242,8 +251,8 @@ public class BoatMoving : MonoBehaviour
         {
             Result result = PointCloudRecognizer.Classify(newGesture, gesturesList.ToArray());
             string movementName = result.GestureClass;
-            Debug.Log(result.GestureClass + "" + result.Score);
-            Debug.Log(movementName);
+            //Debug.Log(result.GestureClass + "" + result.Score);
+           // Debug.Log(movementName);
 
             if (result.Score > recognitionThreshold)
             {
@@ -253,7 +262,7 @@ public class BoatMoving : MonoBehaviour
     }
     void LeftUpdateMovement()
     {
-        Debug.Log("正在手动");
+        //Debug.Log("正在手动");
 
         Vector3 latestPos = leftPositionList[leftPositionList.Count - 1];
         if (Vector3.Distance(latestPos, ReversoLeftT) > recordInterval)
@@ -264,6 +273,33 @@ public class BoatMoving : MonoBehaviour
 
     }
 
+    private void BuildGestureFromPosition()
+    {
+       
+        Debug.Log(gestureStore.GesturePositionList.Count);
+        //创造手势
+        Point[] pointArray = new Point[gestureStore.GesturePositionList.Count];
+
+        for (int i = 0; i < gestureStore.GesturePositionList.Count; i++)
+        {
+            Vector3 rightPoint = Vector3.ProjectOnPlane(gestureStore.GesturePositionList[i], GameObject.Find("Main Camera").transform.right);
+            //Vector3 rightPoint = Vector3.ProjectOnPlane(rightPositionList[i], planeNormal);
+
+            if (debugCubePrefab2) Destroy(Instantiate(debugCubePrefab2, rightPoint, Quaternion.identity), 3);
+            pointArray[i] = new Point(rightPoint.z, rightPoint.y, 0);
+
+
+        }
+        Gesture newGesture = new Gesture(pointArray);
+
+        
+        newGesture.Name = "BoatForward";
+        gesturesList.Add(newGesture);
+
+            
+            
+     
+    }
 
 
 }

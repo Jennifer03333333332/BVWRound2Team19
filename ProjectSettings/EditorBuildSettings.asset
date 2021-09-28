@@ -5,15 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: 2468cc45c1abe3040922181f69937123
   - enabled: 1
-    path: Assets/Scenes/BellRing.unity
-    guid: b3337d9a881c3e844b2e92bc277a5a25
+    path: Assets/Scenes/Level1.unity
+    guid: 4388ec9a7d60e23439ae87b347dec20c
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: a732c51f566b81648a7f36c42e42f2a1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ce4d0077a27a8a6468f4b01d927fd501, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: df4b84a0e22c31d4094aa4f16ca0101c, type: 2}
