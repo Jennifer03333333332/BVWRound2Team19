@@ -14214,6 +14214,28 @@ MonoBehaviour:
     soundName: Zhi
   - audioClip: {fileID: 8300000, guid: 85f2f7eaf34d66a4a98dffff6562dc1f, type: 3}
     soundName: Yu
+  - audioClip: {fileID: 8300000, guid: 23d32e64f641e2a4492a645354138219, type: 3}
+    soundName: PickUpBar
+  - audioClip: {fileID: 8300000, guid: 70dc69e93c415724ab441aa050fbd7df, type: 3}
+    soundName: PuzzleSolvedRewards
+  - audioClip: {fileID: 8300000, guid: b48570e651410cf4586092cc5da96b45, type: 3}
+    soundName: LightUp1
+  - audioClip: {fileID: 8300000, guid: 04fe0513825b7664f9807f88fb53b5b6, type: 3}
+    soundName: LightUp2
+  - audioClip: {fileID: 8300000, guid: f77e19d04b9a9564e9637d5ab23efbbe, type: 3}
+    soundName: LightUp3
+  - audioClip: {fileID: 8300000, guid: 0093438af13ec34429d7a6f53f0b339b, type: 3}
+    soundName: PuzzleFailed1
+  - audioClip: {fileID: 8300000, guid: b94020b38d67c7744ae1de0d5b622183, type: 3}
+    soundName: PuzzleFailed2
+  - audioClip: {fileID: 8300000, guid: 5e19dcc29cedd334f87d7d8543b755a3, type: 3}
+    soundName: PuzzleFailed3
+  - audioClip: {fileID: 8300000, guid: 22dc244164565e04f86e49eade3619a7, type: 3}
+    soundName: Rowing
+  - audioClip: {fileID: 8300000, guid: 09538015cae7ef440be4217dd3e18af7, type: 3}
+    soundName: RowingLeft
+  - audioClip: {fileID: 8300000, guid: 470f0529b9d7843449213c1a822516b6, type: 3}
+    soundName: RowingRight
   BGM1: {fileID: 860910272}
   BGM2: {fileID: 2087385248}
 --- !u!1001 &1051641196
