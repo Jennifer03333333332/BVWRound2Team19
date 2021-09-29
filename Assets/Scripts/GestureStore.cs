@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class GestureStore : MonoBehaviour
 {
-    public List<Vector3> GesturePositionList = new List<Vector3>();
-    // Start is called before the first frame update
-   
+    public List<Vector3> ForwardPositionList = new List<Vector3>();
+    public List<Vector3> BackwardPositionList = new List<Vector3>();
+    
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
