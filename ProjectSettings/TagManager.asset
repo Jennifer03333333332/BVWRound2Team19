@@ -11,6 +11,7 @@ TagManager:
   - RingStick
   - Water
   - Boat
+  - Lantern
   layers:
   - Default
   - TransparentFX

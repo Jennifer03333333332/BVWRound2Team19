@@ -13,17 +13,15 @@ public class ChimesGroup : MonoBehaviour
     public int currentStep;
     public int currentAction;
     public int stepsCount;
-    //public bool checkIfStepCorrect;
+
     public bool StickHitTheBell;
 
     [Header("Bells Time")]
     public int whenErrorWaitInterval;
     public int ShowHintsWaitInterval;
 
-    public enum BellPuzzleStatus { Enter, Step1, planeAni, cutscene2, babyAni, cutscene3, battle, end };
-    public static BellPuzzleStatus gameStatus = BellPuzzleStatus.Enter;
 
-    //范围内的莲花灯
+    //Lotus in Range
     public List<GameObject> lotus = new List<GameObject>();
 
     private GameObject RingStick;
@@ -194,6 +192,11 @@ public class ChimesGroup : MonoBehaviour
     public void ErrorStep()
     {
         print("error");
+
+        
+        SoundManager.instance.PlayingSound("PuzzleFailed"+ UnityEngine.Random.Range(1, 4));
+
+
         StopCoroutine("BeginKnockBell");
         //effects
 
@@ -217,7 +220,7 @@ public class ChimesGroup : MonoBehaviour
         gm.stage++;
         //Absorb the particles
         gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
-
+        SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
     }
 
 }

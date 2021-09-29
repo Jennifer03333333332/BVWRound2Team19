@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
     //Playing sound on where player is.
     public void PlayingSound(string _soundName)
     {
-        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName)].audioClip, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName)].audioClip, Camera.main.transform.position, 2f);
     }
     public int FindSound(string _soundName)
     {
