@@ -18,6 +18,7 @@ public class Fireflies : MonoBehaviour
 
     private void Start()
     {
+        
         particleSystem = GetComponent<ParticleSystem>();
         StartAbsorbing = false;
         CreateDestroyTrail = false;
