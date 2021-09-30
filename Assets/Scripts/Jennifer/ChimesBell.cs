@@ -31,6 +31,9 @@ public class ChimesBell : MonoBehaviour
         {
             //
             SoundManager.instance.PlayingSound(ToneName);
+            //anime
+            gameObject.GetComponent<Animation>().Play();
+
             //print(ToneID);
             //might be Thread insecure
             gameObject.GetComponentInParent<ChimesGroup>().currentAction = ToneID;
