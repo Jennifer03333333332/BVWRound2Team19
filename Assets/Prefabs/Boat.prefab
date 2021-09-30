@@ -498,8 +498,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1711151497831207339}
   - component: {fileID: 1711151497831207334}
-  - component: {fileID: 1711151497831207333}
   - component: {fileID: 1711151497831207332}
+  - component: {fileID: 7629667685785790176}
   m_Layer: 8
   m_Name: Boat
   m_TagString: Boat
@@ -540,21 +540,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1711151497831207333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711151497831207338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb17c0931b9e824294ab8f8107216f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RightHandMovement: r
-  LeftHandMovement: l
-  Speed: 2.5
 --- !u!65 &1711151497831207332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -568,6 +553,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.81, z: 4.63}
   m_Center: {x: 1.58, y: 0.39, z: -0.4}
+--- !u!114 &7629667685785790176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711151497831207338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb17c0931b9e824294ab8f8107216f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightHandMovementforward: rForward
+  RightHandMovementbackward: rBackward
+  LeftHandMovementforward: lForward
+  LeftHandMovementbackward: lBackward
+  Speed: 2.5
+  froceDegree: 30
+  dirX: 0
+  dirY: 0
+  startRotate: {x: 0, y: 0, z: 0, w: 0}
+  EndRoatate: {x: 0, y: 0, z: 0, w: 0}
+  startTime: 0
+  rotateTime: 0
+  rotateAngle: 30
+  rotateSpeed: 15
 --- !u!1 &1711151498271143390
 GameObject:
   m_ObjectHideFlags: 0
