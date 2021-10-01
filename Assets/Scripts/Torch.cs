@@ -8,15 +8,17 @@ public class Torch : MonoBehaviour
 {
     public bool ThisFireIsOn = false;
     public GameObject fire;
-    public float FireIntensity = 5f;
+    public float FireIntensity;
     private GameManager gm;
 
+    public float lightspeed;
 
-
-    static float t = 0.0f;
+    static float t;
 
     private void Start()
     {
+        FireIntensity = 5f;
+        lightspeed = 0.1f;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -42,7 +44,7 @@ public class Torch : MonoBehaviour
         if (ThisFireIsOn)
         {
             fire.GetComponent<Light>().intensity = Mathf.Lerp(0, FireIntensity,t);
-            t += 0.1f*Time.deltaTime;
+            t += lightspeed * Time.deltaTime;
             if (fire.GetComponent<Light>().intensity == FireIntensity)
             {
                 ThisFireIsOn = false;
