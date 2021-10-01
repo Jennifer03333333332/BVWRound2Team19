@@ -20,7 +20,7 @@ public class ChimesGroup : MonoBehaviour
     public int whenErrorWaitInterval;
     public int ShowHintsWaitInterval;
 
-
+    private Vector3 BoatStays;
     //Lotus in Range
     public List<GameObject> lotus = new List<GameObject>();
 
@@ -45,7 +45,7 @@ public class ChimesGroup : MonoBehaviour
         StartCoroutine("WaitForTest");
         //TestField
         //WhenPlayerEntered();
-
+        BoatStays = transform.position + new Vector3(0, 0, -0.2f);
     }
     
 
@@ -77,6 +77,8 @@ public class ChimesGroup : MonoBehaviour
         //print(other.gameObject.name);
         if (other.gameObject.CompareTag("Boat") && !startThePuzzle)
         {
+            //Change animation. Player pickes up the ringing-stick on the boat
+            other.gameObject.SendMessage("ControlBoatStay", BoatStays);
             startThePuzzle = true;
             WhenPlayerEntered();
         }
@@ -85,8 +87,8 @@ public class ChimesGroup : MonoBehaviour
     //1
     public void WhenPlayerEntered()
     {
-        //Change animation. Player pickes up the ringing-stick on the boat
-        
+
+        RingStick.SetActive(true);
         //Play the Hint Music
         StartCoroutine("PlayHintMucis");
         //start detect
@@ -212,8 +214,9 @@ public class ChimesGroup : MonoBehaviour
     public void SolvedBellPuzzle()
     {
         print("Bell Puzzle solved");
+        RingStick.SetActive(false);
         //Music
-        foreach(var item in lotus)
+        foreach (var item in lotus)
         {
             item.GetComponent<Torch>().StartFire();
         }
