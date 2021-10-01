@@ -25,6 +25,7 @@ public class ChimesGroup : MonoBehaviour
     public List<GameObject> lotus = new List<GameObject>();
 
     private GameObject RingStick;
+    private GameObject BoatManager;
     private bool startThePuzzle;
     private int[] playerChoiceArr;
 
@@ -40,6 +41,7 @@ public class ChimesGroup : MonoBehaviour
         stepsCount = 3;
         startThePuzzle = false;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        BoatManager = GameObject.Find("BoatManager");
         BuildRandomMusicOrder();
         RingStick = GameObject.FindGameObjectWithTag("RingStick");
         StartCoroutine("WaitForTest");
@@ -87,6 +89,7 @@ public class ChimesGroup : MonoBehaviour
     //1
     public void WhenPlayerEntered()
     {
+        BoatManager.SendMessage("ChangeBoatMoving",true);
         SoundManager.instance.PlayingSound("PickUpBar");
         RingStick.SetActive(true);
         //Play the Hint Music
@@ -214,6 +217,7 @@ public class ChimesGroup : MonoBehaviour
     public void SolvedBellPuzzle()
     {
         print("Bell Puzzle solved");
+        BoatManager.SendMessage("ChangeBoatMoving", false);
         RingStick.SetActive(false);
         //Music
         foreach (var item in lotus)

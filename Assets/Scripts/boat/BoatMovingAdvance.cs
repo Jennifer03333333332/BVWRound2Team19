@@ -272,7 +272,10 @@ public class BoatMovingAdvance : MonoBehaviour
     }
 
 
-
+    public void ChangeBoatMoving(bool Lock)
+    {
+        canMove = !Lock;
+    }
 
 
 
@@ -429,7 +432,7 @@ public class BoatMovingAdvance : MonoBehaviour
     private void BuildGestureFromPosition()
     {
 
-        Debug.Log(gestureStore.ForwardPositionList.Count);
+        //Debug.Log(gestureStore.ForwardPositionList.Count);
         gesturesList.Clear();
         //创造前进手势
         if(gestureStore.ForwardPositionList.Count != 0)

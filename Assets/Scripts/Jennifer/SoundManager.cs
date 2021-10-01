@@ -18,6 +18,8 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance;
 
+
+    private float soundVolumn = 2f;
     void Awake()
     {
         if (instance == null)
@@ -41,8 +43,12 @@ public class SoundManager : MonoBehaviour
 
     //Playing sound on where player is.
     public void PlayingSound(string _soundName)
-    {
-        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName)].audioClip, Camera.main.transform.position, 2f);
+    {   //float soundVolumn
+        //if (_soundName == "")
+        //{
+
+        //}
+        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName)].audioClip, Camera.main.transform.position, soundVolumn);
     }
     public int FindSound(string _soundName)
     {
