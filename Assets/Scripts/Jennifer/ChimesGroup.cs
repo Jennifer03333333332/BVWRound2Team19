@@ -100,7 +100,8 @@ public class ChimesGroup : MonoBehaviour
     IEnumerator PlayHintMucis() {
         //Play sounds in the order of BellMusicArray
         print(MusicOrder);
-        foreach(var i in MusicOrder)
+        yield return new WaitForSeconds(1);
+        foreach (var i in MusicOrder)
         {
             //print(GlobalUtility.IndexToToneName(i));
             SoundManager.instance.PlayingSound(GlobalUtility.IndexToToneName(i));
@@ -199,7 +200,7 @@ public class ChimesGroup : MonoBehaviour
         print("error");
 
         
-        SoundManager.instance.PlayingSound("PuzzleFailed"+ UnityEngine.Random.Range(1, 4));
+        SoundManager.instance.PlayingSound("PuzzleFailed1");//+ UnityEngine.Random.Range(1, 4)
 
 
         StopCoroutine("BeginKnockBell");
@@ -211,6 +212,7 @@ public class ChimesGroup : MonoBehaviour
         //StartCoroutine()
         //yield return new WaitForSeconds(whenErrorWaitInterval);
         //start again
+        StartCoroutine("PlayHintMucis");
         StartCoroutine("BeginKnockBell");
     }
     //Good end
