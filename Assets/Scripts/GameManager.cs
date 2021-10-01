@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("EndScene");
+        if(stage == 3)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+        
     }
 }
