@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: skyboxClouds
-  m_Shader: {fileID: -6465566751694194690, guid: abebd3df1bdc0e04db040ec1540a754c, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: aefe3770795f1484ca601c4a2a0b1f63, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,6 +20,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_13654e64b28b4d7b88715a88778f4b19:
+        m_Texture: {fileID: 2800000, guid: 740cb15d4d3a8d94c823822adc0834a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_50afa15f1c7f4fa7b4251f059e21a2c7:
         m_Texture: {fileID: 2800000, guid: 740cb15d4d3a8d94c823822adc0834a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -81,6 +85,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_3bb78c5fcec24733b48862957e0d3da0: 1.65
+    - Vector1_424dedacdb834d7fb7d85ed63188b9cf: 0.5
+    - Vector1_7364e9bdcc9f4b9891b59a38d293c8d6: 0.13
+    - Vector1_c45125ce0bd049388b87a5c8a3240a31: 0.2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -108,9 +115,16 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_4b0c9e86f4584ef2a1efa1c8ff127fe2: {r: 0, g: 0.02, b: 0, a: 0}
     - Vector2_b9bfb44bd2b0459282f079b47152fa72: {r: 0, g: -0.01, b: 0.28, a: 0}
+    - Vector2_d1c2f560103741c6ae7ad67980055bb2: {r: 0.2, g: -0.1, b: 0, a: 0}
     - Vector2_f0e561cea18c4c51828001447e6ad59a: {r: 0.57, g: 0.05, b: 0, a: 0}
+    - Vector3_1817ec22c65847d5ab6e1745ca53eed4: {r: 0.26, g: 0, b: 0, a: 0}
+    - Vector3_3540abd4f21a4d038f8b86ecbcb63c53: {r: -0.05, g: -0.05, b: -0.05, a: 0}
     - Vector3_6248945a92df4a4594e9f6dac8404f3b: {r: 0.33, g: 0, b: 0, a: 0}
+    - Vector3_c4f5aaf0bc8d4908807c24ed602139c4: {r: -0.57, g: 0, b: 0, a: 0}
+    - Vector3_d057d24542064c08b668282b82ee80d0: {r: 0, g: 0.07, b: 0, a: 0}
+    - Vector3_dbc5a0f704144ef7bee4d29a73bc2214: {r: -0.5, g: -0.5, b: -0.5, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

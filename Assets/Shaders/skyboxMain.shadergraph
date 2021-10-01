@@ -32,6 +32,9 @@
         },
         {
             "m_Id": "d1c2f560103741c6ae7ad67980055bb2"
+        },
+        {
+            "m_Id": "d057d24542064c08b668282b82ee80d0"
         }
     ],
     "m_Keywords": [],
@@ -92,6 +95,9 @@
         },
         {
             "m_Id": "e674f4e89b934254a58d8e6b2d354502"
+        },
+        {
+            "m_Id": "2bc858a7492242a2b63df2ef47ab0796"
         }
     ],
     "m_GroupDatas": [],
@@ -109,6 +115,20 @@
                     "m_Id": "e633df2a9b0e42e4bbca12f0db1a7dce"
                 },
                 "m_SlotId": -269523160
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "2bc858a7492242a2b63df2ef47ab0796"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "58d5ca439505480eaa957d052b8032b8"
+                },
+                "m_SlotId": -797777674
             }
         },
         {
@@ -661,6 +681,64 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "2bc858a7492242a2b63df2ef47ab0796",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1068.0,
+            "y": -87.0,
+            "width": 162.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "3afc7c686992430692ec5902b7006295"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "d057d24542064c08b668282b82ee80d0"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "3098ce7fc10547bca2727d6003e6a6ce",
+    "m_Id": -797777674,
+    "m_DisplayName": "horizonPosition",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Vector3_0e182df505b9423390421260948d6df7",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "35291ad98896401bbcb19114a2ef1b82",
     "m_Id": 0,
@@ -690,9 +768,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
+        "x": 0.029999999329447748,
+        "y": 0.05999999865889549,
+        "z": 0.09000000357627869,
         "w": 0.0
     }
 }
@@ -756,6 +834,29 @@
     "m_DefaultValue": {
         "x": 0.0,
         "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "3afc7c686992430692ec5902b7006295",
+    "m_Id": 0,
+    "m_DisplayName": "HorizonPosition",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "m_Labels": []
 }
@@ -956,6 +1057,9 @@
             "m_Id": "c33f896191964116afa409eab8061c79"
         },
         {
+            "m_Id": "3098ce7fc10547bca2727d6003e6a6ce"
+        },
+        {
             "m_Id": "84912cd251334952af7e558742c1f3e8"
         }
     ],
@@ -972,14 +1076,16 @@
         "c8b77308-7761-40ff-aa22-022a5c67d166",
         "3382a66e-70b5-4764-9c62-bccd8235250f",
         "14148f6e-92a9-463d-be3f-51602d77cf34",
-        "6ea9cffa-b0a6-4c11-811a-f7200d30dd74"
+        "6ea9cffa-b0a6-4c11-811a-f7200d30dd74",
+        "a352a4eb-5d20-44e7-8528-2e508d716efa"
     ],
     "m_PropertyIds": [
         -706855045,
         -1110035567,
         -13115131,
         -675427993,
-        688882591
+        688882591,
+        -797777674
     ]
 }
 
@@ -1053,9 +1159,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1009.0000610351563,
+            "x": -1010.0,
             "y": 257.0,
-            "width": 106.0,
+            "width": 106.00000762939453,
             "height": 34.0
         }
     },
@@ -1645,7 +1751,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": 0.15000000596046449,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -1678,6 +1784,29 @@
 
 {
     "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector3ShaderProperty",
+    "m_ObjectId": "d057d24542064c08b668282b82ee80d0",
+    "m_Guid": {
+        "m_GuidSerialized": "eb3c7e98-0f16-4881-b245-ea3bb66949d8"
+    },
+    "m_Name": "HorizonPosition",
+    "m_DefaultReferenceName": "Vector3_d057d24542064c08b668282b82ee80d0",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
     "m_ObjectId": "d1c2f560103741c6ae7ad67980055bb2",
     "m_Guid": {
@@ -1692,8 +1821,8 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
+        "x": 0.20000000298023225,
+        "y": -0.05000000074505806,
         "z": 0.0,
         "w": 0.0
     }
@@ -1738,9 +1867,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0,
         "w": 0.0
     }
 }
