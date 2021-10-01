@@ -87,7 +87,7 @@ public class ChimesGroup : MonoBehaviour
     //1
     public void WhenPlayerEntered()
     {
-
+        SoundManager.instance.PlayingSound("PickUpBar");
         RingStick.SetActive(true);
         //Play the Hint Music
         StartCoroutine("PlayHintMucis");

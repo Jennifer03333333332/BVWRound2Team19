@@ -22,6 +22,7 @@ public class Torch : MonoBehaviour
 
     public void StartFire()
     {
+        SoundManager.instance.PlayingSound("LightUp" + UnityEngine.Random.Range(1, 4));
         ThisFireIsOn = true;
     }
     
