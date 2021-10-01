@@ -571,6 +571,8 @@ MonoBehaviour:
   LeftHandMovementbackward: lBackward
   Speed: 2.5
   froceDegree: 30
+  movingAxis: 0
+  InputIntervalThreshold: 0.5
   dirX: 0
   dirY: 0
   startRotate: {x: 0, y: 0, z: 0, w: 0}
@@ -579,6 +581,7 @@ MonoBehaviour:
   rotateTime: 0
   rotateAngle: 30
   rotateSpeed: 15
+  movingDir: {x: 0, y: 0, z: 0}
 --- !u!1 &1711151498271143390
 GameObject:
   m_ObjectHideFlags: 0

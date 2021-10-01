@@ -138,6 +138,7 @@ public class BoatMovingAdvance : MonoBehaviour
         //无缝输入input
         if (canMove)
         {
+            BuildGestureFromPosition();
             rightHandGestureRecognize();
             leftHandGestureRecognize();
         }
@@ -429,6 +430,7 @@ public class BoatMovingAdvance : MonoBehaviour
     {
 
         Debug.Log(gestureStore.ForwardPositionList.Count);
+        gesturesList.Clear();
         //创造前进手势
         if(gestureStore.ForwardPositionList.Count != 0)
         {
