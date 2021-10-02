@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EndScene : MonoBehaviour
 {
-    public float thrust = 1.0f;
+    public float thrust;
 
 
 
@@ -20,6 +20,7 @@ public class EndScene : MonoBehaviour
     //flower
     private void Start()
     {
+        thrust = 0.5f;
         EndSceneLotus = GameObject.Find("EndSceneLotus");
         StartEndScene = false;
     }
@@ -27,11 +28,12 @@ public class EndScene : MonoBehaviour
     {
         if (StartEndScene)
         {
+            StartEndScene = false;
             foreach (var i in EndSceneLotus.GetComponentsInChildren<EndSceneLotus>())
             {
                 //i.transform.position = Vector3.MoveTowards(i.transform.position, new Vector3(i.transform.position.x * spreadEle, 100, i.transform.position.z), Time.deltaTime * speed * Mathf.Abs(i.transform.position.x));
-                float ele = UnityEngine.Random.Range(-10, 9) / 10;
-                print(ele);
+                float ele = ((float)Random.Range(-10, 9)) / 100;
+                print(thrust+ele);
                 i.GetComponent<Rigidbody>().AddForce(0, thrust+ele, 0, ForceMode.Impulse);
 
             }
