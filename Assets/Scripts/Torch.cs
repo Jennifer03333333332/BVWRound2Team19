@@ -33,7 +33,7 @@ public class Torch : MonoBehaviour
         if(collider.transform.tag == "Boat" && !ThisFireIsOn)
         {
             StartFire();
-            gm.stage++;
+            this.GetComponent<GameStage>().SuccessPass();
             gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle", "Lantern");
 
         }

@@ -5,37 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> fireflies = new List<GameObject>();
-    public int stage = 0;//控制玩家进行到哪一步
     /// <summary>
     /// control player game process and the things that showing up
     /// </summary>
-    public class GameStage
-    {
-        public int stage;
-        //public GameObject stage
-    }
+    public List<GameObject> gameStagesPrefab = new List<GameObject>();
+    private List<GameStage> gameStages = new List<GameStage>();
+    public List<Transform> StageGenerateTransforms = new List<Transform>();
+    public List<GameObject> Lanterns = new List<GameObject>();
+    public int nowStage = 0;
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var item in fireflies)
+        for(int i=0; i < gameStagesPrefab.Count; i++)
         {
-            item.SetActive(false);
+            
+            gameStages[i] = gameStagesPrefab[i].GetComponent<GameStage>();
+            gameStages[i].generatePlace = StageGenerateTransforms[1];
+            gameStages[i].lantern = Lanterns[i];
+            gameStages[i].LanternFireInactive();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(stage < fireflies.Count)
+        foreach(var item in gameStages)
         {
-            fireflies[stage].SetActive(true);
+            if (item.passThisStage)
+            {
+                nowStage = item.stage;
+                continue;
+            }
+            else if (!item.passThisStage && !item.isGenerate)
+            {
+                if (item)
+                {
+                    Instantiate(item.gameObject, item.generatePlace.position, Quaternion.identity);
+                    item.isGenerate = true;
+                }
+            }
         }
     }
 
     public void EndGame()
     {
-        if(stage == 3)
+        if(nowStage
+            == (gameStages.Count - 1))
         {
             SceneManager.LoadScene("EndScene");
         }

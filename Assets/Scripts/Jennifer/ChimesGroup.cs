@@ -226,7 +226,7 @@ public class ChimesGroup : MonoBehaviour
         {
             item.GetComponent<Torch>().StartFire();
         }
-        gm.stage++;
+        this.GetComponent<GameStage>().SuccessPass();
         //Absorb the particles
         gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
         SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
