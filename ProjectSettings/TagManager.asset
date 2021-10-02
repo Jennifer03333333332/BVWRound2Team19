@@ -12,6 +12,7 @@ TagManager:
   - Water
   - Boat
   - Lantern
+  - FlyingLotus
   layers:
   - Default
   - TransparentFX

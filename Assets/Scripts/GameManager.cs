@@ -7,6 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> fireflies = new List<GameObject>();
     public int stage = 0;//控制玩家进行到哪一步
+    /// <summary>
+    /// control player game process and the things that showing up
+    /// </summary>
+    public class GameStage
+    {
+        public int stage;
+        //public GameObject stage
+    }
     // Start is called before the first frame update
     void Start()
     {

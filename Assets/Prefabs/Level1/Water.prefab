@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1108130928574756196}
   - component: {fileID: 6127758337743683737}
   - component: {fileID: 7437258343682851800}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -158,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 6770346903634158359, guid: 733e084f7d892be43be83df101e75a72, type: 3}
       propertyPath: m_Name
       value: waterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770346903634158359, guid: 733e084f7d892be43be83df101e75a72, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733e084f7d892be43be83df101e75a72, type: 3}
