@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
         public GameStage gameStage;
         public Transform StageGenerateTransforms;
         public GameObject lantern;
-        public bool PassthisStage;
-        public bool isGenerate;
+    
     }
 
     public List<GameStageStruct> gameStageStructs = new List<GameStageStruct>();
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
             
             if (gameStageStructs[i].lantern) { gameStageStructs[i].gameStage.lantern = gameStageStructs[i].lantern; }
             gameStageStructs[i].gameStage.LanternFireInactive();
+            
         }
     }
 
@@ -43,28 +43,9 @@ public class GameManager : MonoBehaviour
             print(gameStageStructs[nowStage].gameStagesPrefab);
             if (item.gameStagesPrefab)
             {
-                Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
-                item.gameStage.isGenerate = true;
+               GameObject go = Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
+
             }
-        }
-        foreach(var item in gameStageStructs)
-        {
-            if (!item.gameStage.passThisStage && !item.gameStage.isGenerate)
-            {
-                
-                print("stage:" + nowStage);
-                print(item.gameStagesPrefab);
-                if (item.gameStagesPrefab)
-                {
-                    Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
-                    item.gameStage.isGenerate = true;
-                }
-            }
-            if (!item.gameStage.passThisStage)
-            {
-                nowStage = item.gameStage.stageNum;
-                break;
-            }        
         }
     }
 

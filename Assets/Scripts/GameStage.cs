@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class GameStage : MonoBehaviour
 {
-    public int stageNum;
+    public int stageNum = 0;
     public string stageName;//stagename
     public bool passThisStage = false;
     public bool isGenerate = false;
     public GameObject lantern;
     public float LanternIntensity = 30;
+    public GameManager gm;
+
+    private void Start()
+    {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     //成功通过这个阶段
     public void SuccessPass()
