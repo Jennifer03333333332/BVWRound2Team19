@@ -8,6 +8,7 @@ public class Fireflies : MonoBehaviour
     public GameObject DestroyPrefab;
     
     private bool StartAbsorbing;
+    private bool CreateDestroyTrail;
     private GameObject target;
     private ParticleSystem particleSystem;
     private ParticleSystem.Particle[] m_Particles;
@@ -17,7 +18,7 @@ public class Fireflies : MonoBehaviour
 
     private void Start()
     {
-        
+        CreateDestroyTrail = false;
         particleSystem = GetComponent<ParticleSystem>();
         StartAbsorbing = false;
         speed = 1;
@@ -35,17 +36,17 @@ public class Fireflies : MonoBehaviour
     {
         if (StartAbsorbing)
         {
-            version2Particle();
-            
-
-
+            Version2Particle();
             //rotation face to Stick
+            print(transform);
+            print(transform.position);
+
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
             if ((transform.position - target.transform.position).magnitude < 0.1)
             {
                 //TODO new effects
                 //particleSystem.shape = 
-                print(transform);
+                
 
 
                 //end
@@ -53,7 +54,23 @@ public class Fireflies : MonoBehaviour
             }
         }
     }
+    void Version2Particle()
+    {
+        if (!CreateDestroyTrail)
+        {
+            CreateDestroyTrail = true;
+            var no = particleSystem.noise;
+            no.enabled = false;
 
+            var trail = particleSystem.trails;
+            trail.enabled = false;
+            particleSystem.Stop();
+            //Destroy(particleSystem);
+
+            Instantiate(DestroyPrefab, transform);
+        }
+
+    }
     //void OnParticleCollision(GameObject other)
     //{
     //    int numCollisionEvents = particleSystem.GetCollisionEvents(other, particleCollisionEvents);
