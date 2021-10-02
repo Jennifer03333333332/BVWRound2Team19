@@ -1775,8 +1775,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8085199270904290971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.499, z: 0.975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3305876535214402886}
   - {fileID: 1065764906766092900}
@@ -2016,7 +2016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7423301275816646473, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7423301275816646473, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2024,7 +2024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7423301275816646473, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.727
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7423301275816646473, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2075,6 +2075,10 @@ PrefabInstance:
     - target: {fileID: 4397089841791755810, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_Name
       value: Fireflies (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397089841791755810, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7423301275816646473, guid: dc38af5c8c6ac1042906e13491912093, type: 3}
       propertyPath: m_RootOrder

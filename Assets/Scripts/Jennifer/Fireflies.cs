@@ -45,7 +45,7 @@ public class Fireflies : MonoBehaviour
             {
                 //TODO new effects
                 //particleSystem.shape = 
-                
+                print(transform);
 
 
                 //end
@@ -54,15 +54,15 @@ public class Fireflies : MonoBehaviour
         }
     }
 
-    void OnParticleCollision(GameObject other)
-    {
-        int numCollisionEvents = particleSystem.GetCollisionEvents(other, particleCollisionEvents);
+    //void OnParticleCollision(GameObject other)
+    //{
+    //    int numCollisionEvents = particleSystem.GetCollisionEvents(other, particleCollisionEvents);
 
-        for (int i = 0; i < numCollisionEvents; i++)
-        {
-            //Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
-        }
-    }
+    //    for (int i = 0; i < numCollisionEvents; i++)
+    //    {
+    //        //Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
+    //    }
+    //}
 
     void InitializeIfNeeded()
     {
