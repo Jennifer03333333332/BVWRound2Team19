@@ -27022,7 +27022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5006612193986325879
 Transform:
   m_ObjectHideFlags: 0
@@ -27080,6 +27080,8 @@ MonoBehaviour:
   rotateTime: 0
   rotateAngle: 30
   rotateSpeed: 15
+  RightPaddle: {fileID: 0}
+  LeftPaddle: {fileID: 0}
   movingDir: {x: 0, y: 0, z: 0}
 --- !u!54 &5006612193986325882
 Rigidbody:
