@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
         public GameStage gameStage;
         public Transform StageGenerateTransforms;
         public GameObject lantern;
+        public bool PassthisStage;
+        public bool isGenerate;
     }
 
     public List<GameStageStruct> gameStageStructs = new List<GameStageStruct>();

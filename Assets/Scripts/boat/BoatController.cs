@@ -47,30 +47,41 @@ public class BoatController : MonoBehaviour
 
     public void AddFroceOnBoat(string MovementName)
     {
-        print("唤起划船" + MovementName);
+        //print("唤起划船" + MovementName);
         if(MovementName == RightHandMovementforward)
         {
-            print("往前划");
-            RightPaddle.SetBool("isRide", true);
+            //print("往前划");
+            RightPaddle.SetBool("rightRide", true);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis -= 1;
             movingAxis = Mathf.Clamp(movingAxis, -1, 1);
-      
-
+            StartCoroutine(EndRide(RightPaddle, "rightRide"));
             
+
+
         }
         else if (MovementName == LeftHandMovementforward)
         {
 
-            LeftPaddle.SetBool("isRide", true);
+            LeftPaddle.SetBool("leftRide", true);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis += 1;
             movingAxis = Mathf.Clamp(movingAxis, -1, 1);
-            
+            StartCoroutine(EndRide(LeftPaddle, "leftRide"));
+          
         }
    
+    }
+
+
+    IEnumerator EndRide(Animator ride, string bName)
+    {
+        yield return new WaitForSeconds(0.5f);
+        print("关闭划船动画"+ bName);
+        ride.SetBool(bName, false);
+
     }
 
     IEnumerator TurnAround()
@@ -97,6 +108,7 @@ public class BoatController : MonoBehaviour
             Vector3 dir = FroceDir(froceDegree * movingAxis);
             rigidbody.AddForce(dir * Speed, ForceMode.Impulse);
         }
+     
     }
 
     private Vector3 FroceDir(float FroceAngle)
