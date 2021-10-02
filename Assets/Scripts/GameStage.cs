@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameStage : MonoBehaviour
 {
-    public int stage;
-    public Transform generatePlace;
+    public int stageNum;
+    public string stageName;//stagename
     public bool passThisStage = false;
     public bool isGenerate = false;
     public GameObject lantern;
@@ -23,17 +23,17 @@ public class GameStage : MonoBehaviour
     }
     public void LanternFireActive()
     {
-        lantern.SetActive(true);
+        if(lantern) lantern.SetActive(true);
     }
     public void LanternFireInactive()
     {
-        lantern.SetActive(false);
+        if (lantern)  lantern.SetActive(false);
     }
     /// <summary>
     /// 通过关卡后放剧情语音
     /// </summary>
     public void PassStageVoice()
     {
-        SoundManager.instance.PlayingSound(stage.ToString());
+        SoundManager.instance.PlayingSound(stageName);
     }
 }

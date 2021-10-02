@@ -76,6 +76,7 @@ public class ChimesGroup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        SolvedBellPuzzle();//Debug Code delet later
         //print(other.gameObject.name);
         if (other.gameObject.CompareTag("Boat") && !startThePuzzle)
         {

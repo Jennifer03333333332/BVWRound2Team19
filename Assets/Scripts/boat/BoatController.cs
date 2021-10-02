@@ -24,6 +24,9 @@ public class BoatController : MonoBehaviour
     public float rotateAngle = 30f;
     public float rotateSpeed = 15f;
 
+    public Animator RightPaddle;
+    public Animator LeftPaddle;
+
     public Vector3 movingDir = Vector3.zero;
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,7 @@ public class BoatController : MonoBehaviour
         if(MovementName == RightHandMovementforward)
         {
             print("往前划");
+            RightPaddle.SetBool("isRide", true);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis -= 1;
@@ -58,7 +62,8 @@ public class BoatController : MonoBehaviour
         }
         else if (MovementName == LeftHandMovementforward)
         {
-         
+
+            LeftPaddle.SetBool("isRide", true);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis += 1;

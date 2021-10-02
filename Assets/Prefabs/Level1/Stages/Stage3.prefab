@@ -1515,8 +1515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d4166851842074693ba392abb1c77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 3
-  generatePlace: {fileID: 0}
+  stageNum: 3
+  stageName: Stage3
   passThisStage: 0
   isGenerate: 0
   lantern: {fileID: 0}

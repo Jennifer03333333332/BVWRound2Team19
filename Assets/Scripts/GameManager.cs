@@ -8,49 +8,67 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// control player game process and the things that showing up
     /// </summary>
-    public List<GameObject> gameStagesPrefab = new List<GameObject>();
-    private List<GameStage> gameStages = new List<GameStage>();
-    public List<Transform> StageGenerateTransforms = new List<Transform>();
-    public List<GameObject> Lanterns = new List<GameObject>();
+    /// 
+    [System.Serializable]
+    public struct GameStageStruct
+    {
+        public GameObject gameStagesPrefab;
+        public GameStage gameStage;
+        public Transform StageGenerateTransforms;
+        public GameObject lantern;
+    }
+
+    public List<GameStageStruct> gameStageStructs = new List<GameStageStruct>();
     public int nowStage = 0;
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0; i < gameStagesPrefab.Count; i++)
+        for(int i=0; i < gameStageStructs.Count; i++)
         {
             
-            gameStages[i] = gameStagesPrefab[i].GetComponent<GameStage>();
-            gameStages[i].generatePlace = StageGenerateTransforms[1];
-            gameStages[i].lantern = Lanterns[i];
-            gameStages[i].LanternFireInactive();
+            if (gameStageStructs[i].lantern) { gameStageStructs[i].gameStage.lantern = gameStageStructs[i].lantern; }
+            gameStageStructs[i].gameStage.LanternFireInactive();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(var item in gameStages)
+        if(!gameStageStructs[nowStage].gameStage.passThisStage && !gameStageStructs[nowStage].gameStage.isGenerate)
         {
-            if (item.passThisStage)
+            GameStageStruct item = gameStageStructs[nowStage];
+            print("stage:" + nowStage);
+            print(gameStageStructs[nowStage].gameStagesPrefab);
+            if (item.gameStagesPrefab)
             {
-                nowStage = item.stage;
-                continue;
+                Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
+                item.gameStage.isGenerate = true;
             }
-            else if (!item.passThisStage && !item.isGenerate)
+        }
+        foreach(var item in gameStageStructs)
+        {
+            if (!item.gameStage.passThisStage && !item.gameStage.isGenerate)
             {
-                if (item)
+                
+                print("stage:" + nowStage);
+                print(item.gameStagesPrefab);
+                if (item.gameStagesPrefab)
                 {
-                    Instantiate(item.gameObject, item.generatePlace.position, Quaternion.identity);
-                    item.isGenerate = true;
+                    Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
+                    item.gameStage.isGenerate = true;
                 }
             }
+            if (!item.gameStage.passThisStage)
+            {
+                nowStage = item.gameStage.stageNum;
+                break;
+            }        
         }
     }
 
     public void EndGame()
     {
-        if(nowStage
-            == (gameStages.Count - 1))
+        if(nowStage == (gameStageStructs.Count - 1))
         {
             SceneManager.LoadScene("EndScene");
         }
