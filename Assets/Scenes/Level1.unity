@@ -2479,7 +2479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStageStructs:
-  - gameStagesPrefab: {fileID: 0}
+  - gameStagesPrefab: {fileID: 7893652876936574008, guid: 66fb62f1f34397f4888d87f90702c805, type: 3}
     gameStage: {fileID: 7930862008511956916, guid: 66fb62f1f34397f4888d87f90702c805, type: 3}
     StageGenerateTransforms: {fileID: 1647702605}
     lantern: {fileID: 0}
@@ -2507,7 +2507,8 @@ MonoBehaviour:
     gameStage: {fileID: 3236154322752940041, guid: ff1f6129ac932d14da08f5e33f4f2016, type: 3}
     StageGenerateTransforms: {fileID: 185920170}
     lantern: {fileID: 1070480947}
-  nowStage: 0
+  GenerateStage: 0
+  NowStage: 0
 --- !u!4 &150664586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d06d438d109e2f6478bcdac0b8980096, type: 3}
@@ -17719,7 +17720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091450361}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 56.47}
+  m_LocalPosition: {x: 0, y: 0, z: 67.27}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 1802922193}
@@ -34238,6 +34239,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1996499230}
+    - target: {fileID: 7996873758960479500, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
 --- !u!4 &2794478966468574828 stripped

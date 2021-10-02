@@ -8,7 +8,6 @@ public class Fireflies : MonoBehaviour
     public GameObject DestroyPrefab;
     
     private bool StartAbsorbing;
-    private bool CreateDestroyTrail;
     private GameObject target;
     private ParticleSystem particleSystem;
     private ParticleSystem.Particle[] m_Particles;
@@ -21,7 +20,6 @@ public class Fireflies : MonoBehaviour
         
         particleSystem = GetComponent<ParticleSystem>();
         StartAbsorbing = false;
-        CreateDestroyTrail = false;
         speed = 1;
     }
     public void AbsorbTheParticle(string tagName)
@@ -37,8 +35,10 @@ public class Fireflies : MonoBehaviour
     {
         if (StartAbsorbing)
         {
-            Version2Particle();
-            //print(transform.position);
+            version2Particle();
+            
+
+
             //rotation face to Stick
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
             if ((transform.position - target.transform.position).magnitude < 0.1)
@@ -53,41 +53,25 @@ public class Fireflies : MonoBehaviour
             }
         }
     }
-    void Version2Particle()
+
+    void OnParticleCollision(GameObject other)
     {
-        if (!CreateDestroyTrail)
+        int numCollisionEvents = particleSystem.GetCollisionEvents(other, particleCollisionEvents);
+
+        for (int i = 0; i < numCollisionEvents; i++)
         {
-            CreateDestroyTrail = true;
-            var no = particleSystem.noise;
-            no.enabled = false;
-
-            var trail = particleSystem.trails;
-            trail.enabled = false;
-            particleSystem.Stop();
-            //Destroy(particleSystem);
-
-            Instantiate(DestroyPrefab, transform);
+            //Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
         }
-       
     }
-    //void OnParticleCollision(GameObject other)
-    //{
-    //    int numCollisionEvents = particleSystem.GetCollisionEvents(other, particleCollisionEvents);
 
-    //    for (int i = 0; i < numCollisionEvents; i++)
-    //    {
-    //        //Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
-    //    }
-    //}
+    void InitializeIfNeeded()
+    {
+        if (particleSystem == null)
+            particleSystem = GetComponent<ParticleSystem>();
 
-    //void InitializeIfNeeded()
-    //{
-    //    if (particleSystem == null)
-    //        particleSystem = GetComponent<ParticleSystem>();
-
-    //    if (m_Particles == null || m_Particles.Length < particleSystem.main.maxParticles)
-    //        m_Particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
-    //}
+        if (m_Particles == null || m_Particles.Length < particleSystem.main.maxParticles)
+            m_Particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
+    }
 
     void versionOneParticle()
     {
@@ -104,7 +88,7 @@ public class Fireflies : MonoBehaviour
         //shape.rotation = quaternion.eulerAngles;//Quaternion.Lerp(transform.rotation, quaternion, 5 * Time.deltaTime).eulerAngles;
 
         // GetParticles is allocation free because we reuse the m_Particles buffer between updates
-        //InitializeIfNeeded();
+        InitializeIfNeeded();
         int numParticlesAlive = particleSystem.GetParticles(m_Particles);
 
         // Change only the particles that are alive
@@ -113,5 +97,17 @@ public class Fireflies : MonoBehaviour
             m_Particles[i].velocity = new Vector3(0, 0, 0);
         }
     }
-    
+    void version2Particle()
+    {
+        StartAbsorbing = false;
+        var no = particleSystem.noise;
+        no.enabled = false;
+
+        var trail = particleSystem.trails;
+        trail.enabled = false;
+        particleSystem.Stop();
+        //Destroy(particleSystem);
+
+        Instantiate(DestroyPrefab, transform);
+    }
 }

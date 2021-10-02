@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     }
 
     public List<GameStageStruct> gameStageStructs = new List<GameStageStruct>();
-    public int nowStage = 0;
+    public int GenerateStage = 0;
+    public int NowStage = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,22 +37,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!gameStageStructs[nowStage].gameStage.passThisStage && !gameStageStructs[nowStage].gameStage.isGenerate)
+        if(GenerateStage == NowStage && GenerateStage < (gameStageStructs.Count-1))
         {
-            GameStageStruct item = gameStageStructs[nowStage];
-            print("stage:" + nowStage);
-            print(gameStageStructs[nowStage].gameStagesPrefab);
-            if (item.gameStagesPrefab)
+            if (gameStageStructs[GenerateStage].gameStagesPrefab)
             {
-               GameObject go = Instantiate(item.gameStagesPrefab, item.StageGenerateTransforms.position, Quaternion.identity);
-
+                Instantiate(gameStageStructs[GenerateStage].gameStagesPrefab, gameStageStructs[GenerateStage].StageGenerateTransforms.position, Quaternion.Euler(0, 90, 0));
+                GenerateStage++;
             }
         }
+        
     }
 
     public void EndGame()
     {
-        if(nowStage == (gameStageStructs.Count - 1))
+        if(NowStage == (gameStageStructs.Count))
         {
             SceneManager.LoadScene("EndScene");
         }

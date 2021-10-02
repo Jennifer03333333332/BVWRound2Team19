@@ -15,6 +15,7 @@ public class GameIntroduction : MonoBehaviour
         if(other.tag == "Boat")
         {
             this.GetComponent<GameStage>().SuccessPass();
+            Destroy(this.gameObject);
         }
     }
 }

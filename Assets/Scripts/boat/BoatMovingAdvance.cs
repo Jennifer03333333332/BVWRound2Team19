@@ -103,18 +103,18 @@ public class BoatMovingAdvance : MonoBehaviour
             LisPress = lgb;
         }
         //jennifer
-        if (rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool test))
-        {
-            rightTriggerValue = test;
-            if (rightTriggerValue)
-            {
-                RingStick.SetActive(true);
-            }
-            else
-            {
-                RingStick.SetActive(false);
-            }
-        }
+        //if (rightHand.TryGetFeatureValue(CommonUsages.triggerButton, out bool test))
+        //{
+        //    rightTriggerValue = test;
+        //    if (rightTriggerValue)
+        //    {
+        //        RingStick.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        RingStick.SetActive(false);
+        //    }
+        //}
         //Jennifer end
 
 

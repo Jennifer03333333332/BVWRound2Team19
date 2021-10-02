@@ -20,7 +20,8 @@ public class GameStage : MonoBehaviour
     //成功通过这个阶段
     public void SuccessPass()
     {
-        passThisStage = true;
+        gm.NowStage++;
+        LanternFireActive();
     }
 
     public void RegenerateThisStage()
