@@ -7,9 +7,10 @@ public class EndScene : MonoBehaviour
     public float thrust;
 
 
-
-
+    //Where the boat would stay and watch the light
+    public Vector3 BoatStays;
     private GameObject EndSceneLotus;
+    private GameObject BoatManager;
     private float speed = 0.2f;
     private float spreadEle = 2f;
 
@@ -20,15 +21,23 @@ public class EndScene : MonoBehaviour
     //flower
     private void Start()
     {
+        BoatManager = GameObject.Find("BoatManager");
         thrust = 0.5f;
         EndSceneLotus = GameObject.Find("EndSceneLotus");
         StartEndScene = false;
+        BoatStays = new Vector3(0, 1, 171);
     }
     private void Update()
     {
         if (StartEndScene)
         {
             StartEndScene = false;
+
+
+                
+
+
+
             foreach (var i in EndSceneLotus.GetComponentsInChildren<EndSceneLotus>())
             {
                 //i.transform.position = Vector3.MoveTowards(i.transform.position, new Vector3(i.transform.position.x * spreadEle, 100, i.transform.position.z), Time.deltaTime * speed * Mathf.Abs(i.transform.position.x));
@@ -46,9 +55,11 @@ public class EndScene : MonoBehaviour
         if (other.gameObject.CompareTag("Boat"))
         {
             //?Control the boat positon
-            StartEndScene = true;
+            BoatManager.SendMessage("ChangeBoatMoving", true);
+            other.gameObject.SendMessage("ControlBoatStay", BoatStays);
 
+            //Play the ending
+            StartEndScene = true;
         }
     }
-
 }
