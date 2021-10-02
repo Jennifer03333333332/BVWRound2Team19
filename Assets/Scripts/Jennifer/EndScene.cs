@@ -32,8 +32,8 @@ public class EndScene : MonoBehaviour
             foreach (var i in EndSceneLotus.GetComponentsInChildren<EndSceneLotus>())
             {
                 //i.transform.position = Vector3.MoveTowards(i.transform.position, new Vector3(i.transform.position.x * spreadEle, 100, i.transform.position.z), Time.deltaTime * speed * Mathf.Abs(i.transform.position.x));
-                float ele = ((float)Random.Range(-10, 9)) / 100;
-                print(thrust+ele);
+                float ele = ((float)Random.Range(-20, 50)) / 100;
+                //print(thrust+ele);
                 i.GetComponent<Rigidbody>().AddForce(0, thrust+ele, 0, ForceMode.Impulse);
 
             }
