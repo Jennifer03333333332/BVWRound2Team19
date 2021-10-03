@@ -59,6 +59,8 @@ public class EndScene : MonoBehaviour
             other.gameObject.SendMessage("ControlBoatStay", BoatStays);
 
             //Play the ending
+            //SoundManager.instance.PlayingSound("EndSceneBGM");
+            SoundManager.instance.StopPlayingMainBGM();
             StartEndScene = true;
         }
     }

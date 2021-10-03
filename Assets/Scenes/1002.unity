@@ -17166,6 +17166,11 @@ MonoBehaviour:
     soundName: RowingLeft
   - audioClip: {fileID: 8300000, guid: 470f0529b9d7843449213c1a822516b6, type: 3}
     soundName: RowingRight
+  - audioClip: {fileID: 8300000, guid: b97698b00ce3ad943b1e99f5cdd571d1, type: 3}
+    soundName: EndSceneBGM
+  dialog_List:
+  - audioClip: {fileID: 8300000, guid: 5c8ee8646c14bdf4a84e099aef320a8e, type: 3}
+    soundName: 1
   BGM1: {fileID: 860910272}
   BGM2: {fileID: 2087385248}
 --- !u!1001 &1051641196
@@ -26674,6 +26679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 0
+  BoatStays: {x: 0, y: 0, z: 0}
 --- !u!65 &1652999382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34395,7 +34401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1711151497831207339, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 171.062
+      value: 160.82
       objectReference: {fileID: 0}
     - target: {fileID: 1711151497831207339, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
       propertyPath: m_LocalRotation.w

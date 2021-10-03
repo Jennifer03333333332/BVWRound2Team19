@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
         public string soundName;
     }
     public List<SoundGroup> sound_List = new List<SoundGroup>();
+    public List<SoundGroup> dialog_List = new List<SoundGroup>();
 
     public AudioSource BGM1;
     public AudioSource BGM2;
@@ -38,24 +39,31 @@ public class SoundManager : MonoBehaviour
         
     }
 
-
+    public void StopPlayingMainBGM()
+    {
+        Destroy(BGM1.gameObject);
+        BGM2.volume = 0.29f;
+    }
 
 
     //Playing sound on where player is.
     public void PlayingSound(string _soundName)
-    {   //float soundVolumn
-        //if (_soundName == "")
-        //{
-
-        //}
-        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName)].audioClip, Camera.main.transform.position, soundVolumn);
+    {   
+        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, soundVolumn);
     }
-    public int FindSound(string _soundName)
+
+
+    public void PlayingDialog(string _soundName)
+    {
+        AudioSource.PlayClipAtPoint(dialog_List[FindSound(_soundName, dialog_List)].audioClip, Camera.main.transform.position, soundVolumn);
+    }
+
+    public int FindSound(string _soundName, List<SoundGroup> list)
     {
         int i = 0;
-        while (i < sound_List.Count)
+        while (i < list.Count)
         {
-            if (sound_List[i].soundName == _soundName)
+            if (list[i].soundName == _soundName)
             {
                 return i;
             }
