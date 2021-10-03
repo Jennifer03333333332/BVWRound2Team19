@@ -648,6 +648,7 @@ MonoBehaviour:
   ThisFireIsOn: 0
   fire: {fileID: 7464874166516054102}
   FireIntensity: 10
+  lightspeed: 0
 --- !u!1 &3990526591859000449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1372,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.735849, g: 0.26842287, b: 0.26842287, a: 1}
   m_Intensity: 0
-  m_Range: 20
+  m_Range: 30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

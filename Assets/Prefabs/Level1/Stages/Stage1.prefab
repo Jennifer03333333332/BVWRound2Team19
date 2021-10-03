@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisFireIsOn: 0
   fire: {fileID: 8382479333805973478}
-  FireIntensity: 10
+  FireIntensity: 20
   lightspeed: 0
 --- !u!114 &808224478091522398
 MonoBehaviour:
@@ -263,6 +263,7 @@ MonoBehaviour:
   isGenerate: 0
   lantern: {fileID: 0}
   LanternIntensity: 500
+  gm: {fileID: 0}
 --- !u!1 &2523066808568303848
 GameObject:
   m_ObjectHideFlags: 0
