@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GenerateStage == NowStage && GenerateStage < (gameStageStructs.Count-1))
+        if(GenerateStage == NowStage && GenerateStage < (gameStageStructs.Count))
         {
             if (gameStageStructs[GenerateStage].gameStagesPrefab)
             {
@@ -48,12 +48,5 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void EndGame()
-    {
-        if(NowStage == (gameStageStructs.Count))
-        {
-            SceneManager.LoadScene("EndScene");
-        }
-        
-    }
+  
 }

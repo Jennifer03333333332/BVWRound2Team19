@@ -1821,6 +1821,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  RingStick: {fileID: 234010550401404847, guid: 59ffbb3209bbb3447a6c24eb8bf624d3, type: 3}
 --- !u!65 &8379953912150010311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1852,6 +1853,7 @@ MonoBehaviour:
   isGenerate: 0
   lantern: {fileID: 0}
   LanternIntensity: 500
+  gm: {fileID: 0}
 --- !u!1 &8425887602651683302
 GameObject:
   m_ObjectHideFlags: 0

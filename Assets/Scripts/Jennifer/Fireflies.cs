@@ -38,8 +38,8 @@ public class Fireflies : MonoBehaviour
         {
             Version2Particle();
             //rotation face to Stick
-            print(transform);
-            print(transform.position);
+            //print(transform);
+            //print(transform.position);
 
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
             if ((transform.position - target.transform.position).magnitude < 0.1)

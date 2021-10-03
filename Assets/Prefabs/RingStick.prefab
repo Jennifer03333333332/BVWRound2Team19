@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 234010550401404846}
   - component: {fileID: 234010550401404841}
   - component: {fileID: 234010550401404840}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: RingStick
   m_TagString: RingStick
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 234010551290211926}
   - component: {fileID: 234010551290211923}
   - component: {fileID: 234010551290211920}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 2382210772783138728}
   - component: {fileID: 9130448741637798318}
   - component: {fileID: 463859572252624624}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4515960658819234354}
   - component: {fileID: 8499136602933315915}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

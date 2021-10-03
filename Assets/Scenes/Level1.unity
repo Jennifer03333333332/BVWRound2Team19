@@ -2479,10 +2479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStageStructs:
-  - gameStagesPrefab: {fileID: 7893652876936574008, guid: 66fb62f1f34397f4888d87f90702c805, type: 3}
-    gameStage: {fileID: 7930862008511956916, guid: 66fb62f1f34397f4888d87f90702c805, type: 3}
-    StageGenerateTransforms: {fileID: 1647702605}
-    lantern: {fileID: 0}
   - gameStagesPrefab: {fileID: 2429240712612707123, guid: 513078ceb63799547ab4c7ad32b8ce97, type: 3}
     gameStage: {fileID: 808224478091522398, guid: 513078ceb63799547ab4c7ad32b8ce97, type: 3}
     StageGenerateTransforms: {fileID: 327188211}
@@ -3336,6 +3332,23 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &186256015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1711151498763265134, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
+  m_PrefabInstance: {fileID: 1711151497300113292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &186256019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186256015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9664239452e2ca742a9873afb0e074ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &187159158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34233,6 +34246,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1711151497831207339, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711151498763265134, guid: 7649035cf78496e43879da0eea4c6672, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1711151498875468435, guid: 7649035cf78496e43879da0eea4c6672, type: 3}

@@ -24,7 +24,8 @@ public class ChimesGroup : MonoBehaviour
     //Lotus in Range
     public List<GameObject> lotus = new List<GameObject>();
 
-    private GameObject RingStick;
+    public GameObject RingStick;
+    private GameObject RingStickController;
     private GameObject BoatManager;
     private bool startThePuzzle;
     private int[] playerChoiceArr;
@@ -43,7 +44,7 @@ public class ChimesGroup : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         BoatManager = GameObject.Find("BoatManager");
         BuildRandomMusicOrder();
-        RingStick = GameObject.FindGameObjectWithTag("RingStick");
+        //RingStick = GameObject.FindGameObjectWithTag("RingStick");
         StartCoroutine("WaitForTest");
         //TestField
         //WhenPlayerEntered();
@@ -76,7 +77,7 @@ public class ChimesGroup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        SolvedBellPuzzle();//Debug Code delet later
+        //Debug Code delet later
         //print(other.gameObject.name);
         if (other.gameObject.CompareTag("Boat") && !startThePuzzle)
         {
@@ -92,7 +93,11 @@ public class ChimesGroup : MonoBehaviour
     {
         BoatManager.SendMessage("ChangeBoatMoving",true);
         SoundManager.instance.PlayingSound("PickUpBar");
-        RingStick.SetActive(true);
+        //RingStick.SetActive(true);
+        RingStickController = Instantiate(RingStick, GameObject.Find("RightHand Controller").transform, false);
+        RingStickController.transform.localPosition = Vector3.zero;
+        RingStickController.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
+        RingStickController.name = "RingStick";
         //Play the Hint Music
         StartCoroutine("PlayHintMucis");
         //start detect
@@ -100,7 +105,7 @@ public class ChimesGroup : MonoBehaviour
     }
     IEnumerator PlayHintMucis() {
         //Play sounds in the order of BellMusicArray
-        print(MusicOrder);
+        //print(MusicOrder);
         yield return new WaitForSeconds(1);
         foreach (var i in MusicOrder)
         {
@@ -221,15 +226,16 @@ public class ChimesGroup : MonoBehaviour
     {
         print("Bell Puzzle solved");
         BoatManager.SendMessage("ChangeBoatMoving", false);
-        RingStick.SetActive(false);
+        //RingStick.SetActive(false);
+        Destroy(RingStickController);
         //Music
-        foreach (var item in lotus)
-        {
-            item.GetComponent<Torch>().StartFire();
-        }
+        //foreach (var item in lotus)
+        //{
+        //    if(item)item.GetComponent<Torch>().StartFire();
+        //}
         this.GetComponent<GameStage>().SuccessPass();
         //Absorb the particles
-        gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","RingStick");
+        gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","Lantern");
         SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
     }
 

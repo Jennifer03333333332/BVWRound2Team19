@@ -811,6 +811,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  RingStick: {fileID: 234010550401404847, guid: 59ffbb3209bbb3447a6c24eb8bf624d3, type: 3}
 --- !u!65 &4364340894535846873
 BoxCollider:
   m_ObjectHideFlags: 0

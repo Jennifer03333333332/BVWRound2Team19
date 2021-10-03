@@ -41,7 +41,7 @@ public class BoatMovingAdvance : MonoBehaviour
     public List<Vector3> rightPositionList = new List<Vector3>();
     public List<Vector3> leftPositionList = new List<Vector3>();
     //jennifer
-    private GameObject RingStick;
+    //private GameObject RingStick;
     private bool rightTriggerValue;
     //jennifer ends
 
@@ -82,8 +82,8 @@ public class BoatMovingAdvance : MonoBehaviour
             leftHand = leftdevices[0];
         }
         //jennifer
-        RingStick = GameObject.FindGameObjectWithTag("RingStick");
-        RingStick.SetActive(false);
+        //RingStick = GameObject.FindGameObjectWithTag("RingStick");
+        //RingStick.SetActive(false);
         rightTriggerValue = false;
         //jennifer ends
     }

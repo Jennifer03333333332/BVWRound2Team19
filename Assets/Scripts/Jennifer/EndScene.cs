@@ -1,33 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndScene : MonoBehaviour
 {
     public float thrust;
 
 
-
+    GameManager gameManager;
 
     private GameObject EndSceneLotus;
     private float speed = 0.2f;
     private float spreadEle = 2f;
 
     private bool StartEndScene;
+    private GameObject[] EndLotus;
 
     
     //private GameObject[] EndLotus;
     //flower
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         thrust = 0.5f;
         EndSceneLotus = GameObject.Find("EndSceneLotus");
         StartEndScene = false;
+        EndLotus = GameObject.FindGameObjectsWithTag("FlyingLotus");
+        foreach(var item in EndLotus)
+        {
+            item.SetActive(false);
+        }
     }
     private void Update()
     {
         if (StartEndScene)
         {
+
             StartEndScene = false;
             foreach (var i in EndSceneLotus.GetComponentsInChildren<EndSceneLotus>())
             {
@@ -43,12 +52,30 @@ public class EndScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Boat"))
+        if (other.gameObject.CompareTag("Boat") && gameManager.NowStage == (gameManager.gameStageStructs.Count))
         {
             //?Control the boat positon
+            foreach (var item in EndLotus)
+            {
+                item.SetActive(true);
+                //StartCoroutine(LotusActiveRandomTime(item));
+            }
             StartEndScene = true;
 
         }
+    }
+
+    IEnumerator LotusActiveRandomTime(GameObject go)
+    {
+        yield return new WaitForSeconds(Random.RandomRange(0f, 2f));
+        go.SetActive(true);
+    }
+
+    IEnumerator JumpToEndScene()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("EndScene");
+
     }
 
 }
