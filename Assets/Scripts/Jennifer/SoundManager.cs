@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
     public void StopPlayingMainBGM()
     {
         Destroy(BGM1.gameObject);
-        BGM2.volume = 0.29f;
+        BGM2.volume = 0.1f;
     }
 
 

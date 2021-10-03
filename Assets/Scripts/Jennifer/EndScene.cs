@@ -30,10 +30,10 @@ public class EndScene : MonoBehaviour
         EndSceneLotus = GameObject.Find("EndSceneLotus");
         StartEndScene = false;
         EndLotus = GameObject.FindGameObjectsWithTag("FlyingLotus");
-        foreach(var item in EndLotus)
-        {
-            item.SetActive(false);
-        }
+        //foreach(var item in EndLotus)
+        //{
+        //    item.SetActive(false);
+        //}
     }
     private void Update()
     {
@@ -55,7 +55,7 @@ public class EndScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Boat") && gameManager.NowStage == (gameManager.gameStageStructs.Count))
+        if (other.gameObject.CompareTag("Boat"))// && gameManager.NowStage == (gameManager.gameStageStructs.Count)
         {
             BoatManager.SendMessage("ChangeBoatMoving", true);
             other.gameObject.SendMessage("ControlBoatStay", BoatStays);
@@ -68,6 +68,7 @@ public class EndScene : MonoBehaviour
             //}
             StartEndScene = true;
             //Play the ending
+            
             SoundManager.instance.PlayingSound("EndSceneBGM");
             SoundManager.instance.StopPlayingMainBGM();
             StartEndScene = true;
