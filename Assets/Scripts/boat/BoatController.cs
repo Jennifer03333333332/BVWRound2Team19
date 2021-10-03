@@ -36,8 +36,12 @@ public class BoatController : MonoBehaviour
     private void Update()
     {
         //jerry 神仙代码不准改
-        float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
-       transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
+        if (GameObject.Find("BoatManager").GetComponent<BoatMovingAdvance>().canMove)
+        {
+            float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
+            transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
+        }
+        
 
         //jerry 神仙代码不准改
 
