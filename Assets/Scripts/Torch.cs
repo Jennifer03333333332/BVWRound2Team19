@@ -34,7 +34,11 @@ public class Torch : MonoBehaviour
         {
             StartFire();
             this.GetComponent<GameStage>().SuccessPass();
-            this.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle", "Lantern");
+            if (this.GetComponentInChildren<Fireflies>())
+            {
+                this.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle", "Lantern");
+            }
+            
 
         }
     }
