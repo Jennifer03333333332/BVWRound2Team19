@@ -28,6 +28,8 @@ public class ControlBoatOnChime : MonoBehaviour
         if (StartControlling)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * speed);
+
             if ((transform.position - targetPos).magnitude < 0.1)
             {
                 StartControlling = false;
