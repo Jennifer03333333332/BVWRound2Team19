@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
 
     public void StopPlayingMainBGM()
     {
-        Destroy(BGM1.gameObject);
+        BGM1.Stop();//destroy会出bug
         BGM2.volume = 0.1f;
     }
 
@@ -74,5 +74,13 @@ public class SoundManager : MonoBehaviour
             i++;
         }
         return i;
+    }
+
+    public float SoundClipsLong(string _soundName)
+    {
+
+        float ClipsLong = dialog_List[FindSound(_soundName, dialog_List)].audioClip.length;
+        print(_soundName + "声音长度" + ClipsLong);
+        return ClipsLong;
     }
 }

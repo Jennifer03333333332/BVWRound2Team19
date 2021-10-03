@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody))]
-public class BoatController : MonoBehaviour
+public class IntroBoatController : MonoBehaviour
 {
     private Rigidbody rigidbody;
     public string RightHandMovementforward = "rForward";
@@ -28,64 +29,74 @@ public class BoatController : MonoBehaviour
     public Animator LeftPaddle;
 
     public Vector3 movingDir = Vector3.zero;
+
+    public bool FirstForwardRide = false;
+
+    private IntroductionManager introductionManager;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = this.GetComponent<Rigidbody>();
+        introductionManager = FindObjectOfType<IntroductionManager>();
     }
     private void Update()
     {
-        //jerry 神仙代码不准改
+ 
         if (GameObject.Find("BoatManager").GetComponent<BoatMovingAdvance>().canMove)
         {
             float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
             transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
         }
-        
 
-        //jerry 神仙代码不准改
 
-        //移动
 
     }
 
     public void AddFroceOnBoat(string MovementName)
     {
         //print("唤起划船" + MovementName);
-        if(MovementName == RightHandMovementforward)
+        if (MovementName == RightHandMovementforward)
         {
             //print("往前划");
-            RightPaddle.SetBool("rightRide", true);
-            SoundManager.instance.PlayingSound("RowingRight");
-            StartCoroutine(TurnAround());
+            if(FirstForwardRide)
+            {
+                RightPaddle.SetBool("rightRide", true);
+                SoundManager.instance.PlayingSound("RowingRight");
+                StartCoroutine(TurnAround());
+                StartCoroutine(EndRide(RightPaddle, "rightRide"));
+            }
             StartCoroutine(RidingBoat());
             movingAxis -= 1;
             movingAxis = Mathf.Clamp(movingAxis, -1, 1);
-            StartCoroutine(EndRide(RightPaddle, "rightRide"));
-            
+          
+
 
 
         }
         else if (MovementName == LeftHandMovementforward)
         {
+            if(FirstForwardRide)
+            {
+                LeftPaddle.SetBool("leftRide", true);
+                SoundManager.instance.PlayingSound("RowingLeft");
+                StartCoroutine(TurnAround());
+                StartCoroutine(EndRide(LeftPaddle, "leftRide"));
 
-            LeftPaddle.SetBool("leftRide", true);
-            SoundManager.instance.PlayingSound("RowingLeft");
-            StartCoroutine(TurnAround());
+            }
+
             StartCoroutine(RidingBoat());
             movingAxis += 1;
             movingAxis = Mathf.Clamp(movingAxis, -1, 1);
-            StartCoroutine(EndRide(LeftPaddle, "leftRide"));
-          
+            
         }
-   
+
     }
 
 
     IEnumerator EndRide(Animator ride, string bName)
     {
         yield return new WaitForSeconds(0.5f);
-        print("关闭划船动画"+ bName);
+        print("关闭划船动画" + bName);
         ride.SetBool(bName, false);
 
     }
@@ -93,28 +104,38 @@ public class BoatController : MonoBehaviour
     IEnumerator TurnAround()
     {
         yield return new WaitForSeconds(InputIntervalThreshold);
-        
-        if(movingAxis != 0)
+
+        if (movingAxis != 0)
         {
-                startTime = Time.time;
-                startRotate = transform.localRotation;
-                EndRoatate = Quaternion.AngleAxis(rotateAngle * movingAxis, Vector3.up) * startRotate;
+            startTime = Time.time;
+            startRotate = transform.localRotation;
+            EndRoatate = Quaternion.AngleAxis(rotateAngle * movingAxis, Vector3.up) * startRotate;
         }
-        
+
     }
     IEnumerator RidingBoat()
     {
         yield return new WaitForSeconds(InputIntervalThreshold);
-        if(movingAxis == 0)
+        if (movingAxis == 0)
         {
+            //player's First Ride;
+            if(!FirstForwardRide)
+            {
+                introductionManager.nowStage++;
+                FirstForwardRide = true;
+            }
             rigidbody.AddForce(transform.forward * Speed, ForceMode.Impulse);
         }
-        else if(movingAxis != 0)
+        else if (movingAxis != 0)
         {
-            Vector3 dir = FroceDir(froceDegree * movingAxis);
-            rigidbody.AddForce(dir * Speed, ForceMode.Impulse);
+            if(FirstForwardRide)
+            {
+                Vector3 dir = FroceDir(froceDegree * movingAxis);
+                rigidbody.AddForce(dir * Speed, ForceMode.Impulse);
+            }
+       
         }
-     
+
     }
 
     private Vector3 FroceDir(float FroceAngle)
@@ -123,14 +144,14 @@ public class BoatController : MonoBehaviour
         float nowDegree = Mathf.Acos(nowNormalPos.x);
         //Asin范围是[-90,90]
         //Acos范围是[0,180];
-        if(nowNormalPos.z < 0)
+        if (nowNormalPos.z < 0)
         {
             nowDegree = Mathf.PI * 2 - nowDegree;
         }
         //对大于180的角度,进行处理
         float newDegree = nowDegree - Mathf.PI * FroceAngle / 180;
         if (newDegree > 360) { newDegree -= 360; }
-        else if(newDegree < 0) { newDegree += 360; }
+        else if (newDegree < 0) { newDegree += 360; }
         Vector3 dir = new Vector3(Mathf.Cos(newDegree), transform.position.y, Mathf.Sin(newDegree));
         print("新方向" + dir);
         dir.Normalize();

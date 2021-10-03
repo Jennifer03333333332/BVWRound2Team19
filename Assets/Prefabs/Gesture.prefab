@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2967055812467248472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2967055812467248479}
+  - component: {fileID: 2967055812467248478}
+  m_Layer: 0
+  m_Name: Gesture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2967055812467248479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967055812467248472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.30875063, y: -1.9079211, z: 2.6500227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2967055812467248478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967055812467248472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead4904ea4fd5d4588afd4192f9f756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForwardPositionList:
+  - {x: 0.09373093, y: 1.2140446, z: 0.114380896}
+  - {x: 0.0804559, y: 1.2425264, z: 0.16290599}
+  - {x: 0.0688082, y: 1.2571416, z: 0.2149651}
+  - {x: 0.05704677, y: 1.2708805, z: 0.2782895}
+  - {x: 0.044457674, y: 1.2843504, z: 0.34763452}
+  - {x: 0.04117942, y: 1.2829608, z: 0.4120109}
+  - {x: 0.04257047, y: 1.2273123, z: 0.41200525}
+  - {x: 0.04662764, y: 1.1741657, z: 0.3684487}
+  - {x: 0.049882412, y: 1.1269518, z: 0.3226166}
+  - {x: 0.050370336, y: 1.088419, z: 0.28067952}
+  - {x: 0.049047112, y: 1.0437357, z: 0.2354562}
+  - {x: 0.05195725, y: 1.0017991, z: 0.20433992}
+  - {x: 0.07606447, y: 1.0546689, z: 0.18468207}
+  - {x: 0.09253931, y: 1.1175172, z: 0.16165698}
+  - {x: 0.106833935, y: 1.165499, z: 0.13991225}
+  - {x: 0.13055837, y: 1.2315321, z: 0.106202185}
+  BackwardPositionList:
+  - {x: 0.024843097, y: 1.1798911, z: 0.39031795}
+  - {x: 0.034658074, y: 1.177958, z: 0.32963824}
+  - {x: 0.045384884, y: 1.1671772, z: 0.27305785}
+  - {x: 0.06020379, y: 1.1522382, z: 0.21620667}
+  - {x: 0.074601054, y: 1.1426904, z: 0.16739029}
+  - {x: 0.09127748, y: 1.136416, z: 0.11802995}
+  - {x: 0.10930884, y: 1.1552789, z: 0.069963574}
+  - {x: 0.114414096, y: 1.2138848, z: 0.069678664}
+  - {x: 0.115296125, y: 1.2578511, z: 0.10283059}
+  - {x: 0.11377859, y: 1.317007, z: 0.1474219}
+  - {x: 0.11493933, y: 1.355237, z: 0.18915516}
+  - {x: 0.08845663, y: 1.3473756, z: 0.24267894}
+  - {x: 0.07039261, y: 1.3101369, z: 0.27286863}
+  - {x: 0.047959924, y: 1.2623001, z: 0.31286305}
+  - {x: 0.03074646, y: 1.217919, z: 0.35230362}
+  - {x: 0.012221456, y: 1.1468443, z: 0.40181413}
+  isDebug: 0
+  debugCube: {fileID: 3428623261611194897, guid: 5a7331a67d38f3143a11c9f48845e1e6, type: 3}
