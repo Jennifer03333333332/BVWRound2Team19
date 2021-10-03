@@ -52,6 +52,10 @@ public class SoundManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, soundVolumn);
     }
 
+    public void PlayingSound(string _soundName, float volume)
+    {
+        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, volume);
+    }
 
     public void PlayingDialog(string _soundName)
     {

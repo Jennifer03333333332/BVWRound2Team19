@@ -20,7 +20,7 @@ public class ChimesGroup : MonoBehaviour
     public int whenErrorWaitInterval;
     public int ShowHintsWaitInterval;
     public float DelayStickCreate;
-
+    public float PlayMusicVolume;
     private Vector3 BoatStays;
     //Lotus in Range
     public List<GameObject> lotus = new List<GameObject>();
@@ -38,7 +38,7 @@ public class ChimesGroup : MonoBehaviour
     }
     private void Start()
     {
-        
+        PlayMusicVolume = 4f;
         currentStep = 0;
         stepsCount = 3;
         DelayStickCreate = 6f;
@@ -109,7 +109,7 @@ public class ChimesGroup : MonoBehaviour
         foreach (var i in MusicOrder)
         {
             //print(GlobalUtility.IndexToToneName(i));
-            SoundManager.instance.PlayingSound(GlobalUtility.IndexToToneName(i));
+            SoundManager.instance.PlayingSound(GlobalUtility.IndexToToneName(i), PlayMusicVolume);
             yield return new WaitForSeconds(ShowHintsWaitInterval);
         }
     }
