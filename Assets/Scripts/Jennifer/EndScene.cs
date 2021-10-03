@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class EndScene : MonoBehaviour
 {
     public float thrust;
-
-
+    //Where the boat would stay and watch the light
+    public Vector3 BoatStays;
+    private GameObject BoatManager;
     GameManager gameManager;
 
     private GameObject EndSceneLotus;
@@ -23,6 +24,8 @@ public class EndScene : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        BoatManager = GameObject.Find("BoatManager");
+        BoatStays = new Vector3(0, 1, 171);
         thrust = 0.5f;
         EndSceneLotus = GameObject.Find("EndSceneLotus");
         StartEndScene = false;
@@ -54,14 +57,20 @@ public class EndScene : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boat") && gameManager.NowStage == (gameManager.gameStageStructs.Count))
         {
-            //?Control the boat positon
-            foreach (var item in EndLotus)
-            {
-                item.SetActive(true);
-                //StartCoroutine(LotusActiveRandomTime(item));
-            }
-            StartEndScene = true;
+            BoatManager.SendMessage("ChangeBoatMoving", true);
+            other.gameObject.SendMessage("ControlBoatStay", BoatStays);
 
+            //?Control the boat positon
+            //foreach (var item in EndLotus)
+            //{
+            //    item.SetActive(true);
+            //    //StartCoroutine(LotusActiveRandomTime(item));
+            //}
+            StartEndScene = true;
+            //Play the ending
+            //SoundManager.instance.PlayingSound("EndSceneBGM");
+            SoundManager.instance.StopPlayingMainBGM();
+            StartEndScene = true;
         }
     }
 
@@ -71,11 +80,11 @@ public class EndScene : MonoBehaviour
         go.SetActive(true);
     }
 
-    IEnumerator JumpToEndScene()
-    {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("EndScene");
+    //IEnumerator JumpToEndScene()
+    //{
+    //    yield return new WaitForSeconds(5f);
+    //    SceneManager.LoadScene("EndScene");
 
-    }
+    //}
 
 }
