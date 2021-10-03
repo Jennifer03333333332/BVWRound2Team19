@@ -19,6 +19,7 @@ public class ChimesGroup : MonoBehaviour
     [Header("Bells Time")]
     public int whenErrorWaitInterval;
     public int ShowHintsWaitInterval;
+    public float DelayStickCreate;
 
     private Vector3 BoatStays;
     //Lotus in Range
@@ -40,6 +41,7 @@ public class ChimesGroup : MonoBehaviour
         
         currentStep = 0;
         stepsCount = 3;
+        DelayStickCreate = 6f;
         startThePuzzle = false;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         BoatManager = GameObject.Find("BoatManager");
@@ -116,8 +118,8 @@ public class ChimesGroup : MonoBehaviour
     IEnumerator BeginKnockBell()
     {
         print("BeginKnockBell");
-        ControlRingStick(true);
         currentStep = 0;
+        StartCoroutine("DelayRingStickCreate");
         while (currentStep < stepsCount)
         {
             yield return StartCoroutine("EachStep");
@@ -229,4 +231,10 @@ public class ChimesGroup : MonoBehaviour
         SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
     }
 
+
+    IEnumerator DelayRingStickCreate()
+    {
+        yield return new WaitForSeconds(DelayStickCreate);
+        ControlRingStick(true);
+    }
 }
