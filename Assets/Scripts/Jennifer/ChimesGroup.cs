@@ -48,7 +48,7 @@ public class ChimesGroup : MonoBehaviour
         StartCoroutine("WaitForTest");
         //TestField
         //WhenPlayerEntered();
-        BoatStays = transform.position + new Vector3(0, 0, -0.2f);
+        BoatStays = transform.position + new Vector3(-0.2f, 0, -0.1f);
     }
     
 

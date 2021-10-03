@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Team19
-  productName: Team19_interim
+  productName: Team19_PlayerTest
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -130,6 +130,8 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 11400000, guid: ce4d0077a27a8a6468f4b01d927fd501, type: 2}
+  - {fileID: 0}
+  - {fileID: 8139933734871425207, guid: df4b84a0e22c31d4094aa4f16ca0101c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -147,7 +149,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Team19.Team19_interim
+    Android: com.Team19.Team19_PlayerTest
     Standalone: com.Team19.Team19interim
   buildNumber:
     Standalone: 0
