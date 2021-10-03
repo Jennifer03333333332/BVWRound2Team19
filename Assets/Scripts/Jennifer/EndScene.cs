@@ -68,17 +68,17 @@ public class EndScene : MonoBehaviour
             //}
             StartEndScene = true;
             //Play the ending
-            //SoundManager.instance.PlayingSound("EndSceneBGM");
+            SoundManager.instance.PlayingSound("EndSceneBGM");
             SoundManager.instance.StopPlayingMainBGM();
             StartEndScene = true;
         }
     }
 
-    IEnumerator LotusActiveRandomTime(GameObject go)
-    {
-        yield return new WaitForSeconds(Random.RandomRange(0f, 2f));
-        go.SetActive(true);
-    }
+    //IEnumerator LotusActiveRandomTime(GameObject go)
+    //{
+    //    yield return new WaitForSeconds(Random.RandomRange(0f, 2f));
+    //    go.SetActive(true);
+    //}
 
     //IEnumerator JumpToEndScene()
     //{

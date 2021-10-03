@@ -94,10 +94,7 @@ public class ChimesGroup : MonoBehaviour
         BoatManager.SendMessage("ChangeBoatMoving",true);
         SoundManager.instance.PlayingSound("PickUpBar");
         //RingStick.SetActive(true);
-        RingStickController = Instantiate(RingStick, GameObject.Find("RightHand Controller").transform, false);
-        RingStickController.transform.localPosition = Vector3.zero;
-        RingStickController.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
-        RingStickController.name = "RingStick";
+        
         //Play the Hint Music
         StartCoroutine("PlayHintMucis");
         //start detect
@@ -119,6 +116,7 @@ public class ChimesGroup : MonoBehaviour
     IEnumerator BeginKnockBell()
     {
         print("BeginKnockBell");
+        ControlRingStick(true);
         currentStep = 0;
         while (currentStep < stepsCount)
         {
@@ -126,7 +124,7 @@ public class ChimesGroup : MonoBehaviour
             currentStep++;
         }
         FinishedPuzzle();
-        //SolvedBellPuzzle();
+        
         yield return null;
     }
     //3
@@ -152,30 +150,22 @@ public class ChimesGroup : MonoBehaviour
         return false;
     }
 
+    //xiao mings create and Destroy RingStick
+    public void ControlRingStick(bool mode)
+    {
+        if (mode)
+        {
+            RingStickController = Instantiate(RingStick, GameObject.Find("RightHand Controller").transform, false);
+            RingStickController.transform.localPosition = Vector3.zero;
+            RingStickController.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
+            RingStickController.name = "RingStick";
+        }
+        else
+        {
+            Destroy(RingStickController);
+        }
+    }
 
-
-    //private bool Check()
-    //{
-    //    if (checkIfStepCorrect)
-    //    {
-    //        print("Need "+MusicOrder[currentStep]  + " , you choose " + currentAction);
-    //        //Wrong bell
-    //        if (currentAction != MusicOrder[currentStep])
-    //        {
-    //            checkIfStepCorrect = false;
-    //            //ErrorStep();
-    //            StartCoroutine("ErrorStep");
-                
-    //            return false;
-    //        }
-    //        //Right Bell
-    //        checkIfStepCorrect = false;
-    //        return true;
-    //    }
-    //    //Haven't took action
-    //    return false;
-    //}
-    //Bad end
     public void FinishedPuzzle()
     {
         bool res = IfPlayersRight();
@@ -204,8 +194,8 @@ public class ChimesGroup : MonoBehaviour
     public void ErrorStep()
     {
         print("error");
+        ControlRingStick(false);
 
-        
         SoundManager.instance.PlayingSound("PuzzleFailed1");//+ UnityEngine.Random.Range(1, 4)
 
 
@@ -227,7 +217,7 @@ public class ChimesGroup : MonoBehaviour
         print("Bell Puzzle solved");
         BoatManager.SendMessage("ChangeBoatMoving", false);
         //RingStick.SetActive(false);
-        Destroy(RingStickController);
+        ControlRingStick(false);
         //Music
         //foreach (var item in lotus)
         //{
