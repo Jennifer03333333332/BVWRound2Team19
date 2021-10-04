@@ -67,7 +67,7 @@ public class IntroBoatController : MonoBehaviour
             if(FirstForwardRide)
             {
                 RightPaddle.SetBool("rightRide", true);
-                SoundManager.instance.PlayingSound("RowingRight");
+                SoundManager.instance.PlayingSound("RowingRight",1f);
                 StartCoroutine(TurnAround());
                 StartCoroutine(EndRide(RightPaddle, "rightRide"));
             }
@@ -84,7 +84,7 @@ public class IntroBoatController : MonoBehaviour
             if(FirstForwardRide)
             {
                 LeftPaddle.SetBool("leftRide", true);
-                SoundManager.instance.PlayingSound("RowingLeft");
+                SoundManager.instance.PlayingSound("RowingLeft",1f);
                 StartCoroutine(TurnAround());
                 StartCoroutine(EndRide(LeftPaddle, "leftRide"));
 
@@ -143,8 +143,8 @@ public class IntroBoatController : MonoBehaviour
                 Right.material = normalMaterial;
                 RightPaddle.SetBool("rightRide", true);
                 LeftPaddle.SetBool("leftRide", true);
-                SoundManager.instance.PlayingSound("RowingRight");
-                SoundManager.instance.PlayingSound("RowingLeft");
+                SoundManager.instance.PlayingSound("RowingRight",1f);
+                SoundManager.instance.PlayingSound("RowingLeft",1f);
                 StartCoroutine(EndRide(RightPaddle, "rightRide"));
                 StartCoroutine(EndRide(LeftPaddle, "leftRide"));
                 introductionManager.nowStage++;

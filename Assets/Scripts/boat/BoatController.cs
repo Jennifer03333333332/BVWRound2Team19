@@ -56,7 +56,7 @@ public class BoatController : MonoBehaviour
         {
             //print("往前划");
             RightPaddle.SetBool("rightRide", true);
-            SoundManager.instance.PlayingSound("RowingRight");
+            SoundManager.instance.PlayingSound("RowingRight",1f);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis -= 1;
@@ -70,7 +70,7 @@ public class BoatController : MonoBehaviour
         {
 
             LeftPaddle.SetBool("leftRide", true);
-            SoundManager.instance.PlayingSound("RowingLeft");
+            SoundManager.instance.PlayingSound("RowingLeft",1f);
             StartCoroutine(TurnAround());
             StartCoroutine(RidingBoat());
             movingAxis += 1;
