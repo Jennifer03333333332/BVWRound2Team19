@@ -43,54 +43,13 @@ public class IntroBoatController : MonoBehaviour
     {
         float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
         transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
-        if (!FirstForwardRide)
-        {
-            //播放闪光的paddle
-            //FlashPaddle();
-            //播放手的动画
-
-        }
+      
 
 
     }
 
 
-    //public Material FlashMaterial;
-    //public Material NorMalMaterial;
-    //private float flashTime = 3f;
-    //private float containTime = 1f;
-    //private bool changeMaterial = false;
-    //private float NowTime = 0;
-    //public void FlashPaddle()
-    //{
-    //    GameObject rp = GameObject.Find("right_Paddle");
-    //    GameObject lp = GameObject.Find("left_Paddle");
-    //    NowTime += Time.deltaTime;
-    //    if(!changeMaterial)
-    //    {
-    //        if(NowTime >= flashTime)
-    //        {
-    //            rp.GetComponent<Renderer>().material = FlashMaterial;
-    //            lp.GetComponent<Renderer>().material = FlashMaterial;
-    //            NowTime = 0;
-    //            changeMaterial = true;
-
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (NowTime >= containTime)
-    //        {
-    //            rp.GetComponent<Renderer>().material = NorMalMaterial;
-    //            lp.GetComponent<Renderer>().material = NorMalMaterial;
-    //            NowTime = 0;
-    //            changeMaterial = false;
-
-    //        }
-
-    //    }
-        
-    //}
+   
 
 
 
@@ -157,6 +116,12 @@ public class IntroBoatController : MonoBehaviour
         }
 
     }
+
+
+
+    public Material normalMaterial;
+    public Renderer Left;
+    public Renderer Right;
     IEnumerator RidingBoat()
     {
         yield return new WaitForSeconds(InputIntervalThreshold);
@@ -165,6 +130,8 @@ public class IntroBoatController : MonoBehaviour
             //player's First Ride;
             if(!FirstForwardRide)
             {
+                Left.material = normalMaterial;
+                Right.material = normalMaterial;
                 RightPaddle.SetBool("rightRide", true);
                 LeftPaddle.SetBool("leftRide", true);
                 SoundManager.instance.PlayingSound("RowingRight");
