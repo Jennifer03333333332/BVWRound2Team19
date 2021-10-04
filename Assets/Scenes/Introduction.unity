@@ -1795,8 +1795,8 @@ MonoBehaviour:
   LeftPaddle: {fileID: 183357667}
   movingDir: {x: 0, y: 0, z: 0}
   FirstForwardRide: 0
-  IntroRightHand: {fileID: 0}
-  IntroLeftHand: {fileID: 0}
+  IntroRightHand: {fileID: 1893870434}
+  IntroLeftHand: {fileID: 4451652929018546005}
   normalMaterial: {fileID: 2100000, guid: 2d951b9cc11aac8479d995baec292b9c, type: 2}
   Left: {fileID: 1055612368}
   Right: {fileID: 1961378879}
@@ -2001,6 +2001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455c0bae53603814898827a94475b194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rightHand: {fileID: 1893870434}
+  LeftHand: {fileID: 4451652929018546005}
 --- !u!114 &4320652465118258247
 MonoBehaviour:
   m_ObjectHideFlags: 0

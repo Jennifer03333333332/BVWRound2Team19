@@ -41,11 +41,11 @@ public class ChimesBell : MonoBehaviour
 
             //change material
 
-            Renderer[] rendererArr = gameObject.GetComponentsInChildren<Renderer>();
-            for (int i=0; i< rendererArr.Length; i++)
-            {
-                rendererArr[i].material = CollideMaterial;
-            }
+            //Renderer[] rendererArr = gameObject.GetComponentsInChildren<Renderer>();
+            //for (int i=0; i< rendererArr.Length; i++)
+            //{
+            //    rendererArr[i].material = CollideMaterial;
+            //}
 
         }
     }
@@ -55,11 +55,11 @@ public class ChimesBell : MonoBehaviour
         if (other.gameObject.name == "RingStick")
         {
             //change material
-            Renderer[] rendererArr = gameObject.GetComponentsInChildren<Renderer>();
-            for (int i = 0; i < rendererArr.Length; i++)
-            {
-                rendererArr[i].material = normalMaterial;
-            }
+            //Renderer[] rendererArr = gameObject.GetComponentsInChildren<Renderer>();
+            //for (int i = 0; i < rendererArr.Length; i++)
+            //{
+            //    rendererArr[i].material = normalMaterial;
+            //}
 
         }
     }
