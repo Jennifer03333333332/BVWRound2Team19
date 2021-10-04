@@ -54,7 +54,15 @@ public class SoundManager : MonoBehaviour
 
     public void PlayingSound(string _soundName, float volume)
     {
-        AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, volume);
+        if (_soundName == "RowingLeft" && _soundName == "RowingRight")
+        {
+            AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, 0.5f);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(sound_List[FindSound(_soundName, sound_List)].audioClip, Camera.main.transform.position, volume);
+        }
+        
     }
 
     public void PlayingDialog(string _soundName)

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class IntroBoatController : MonoBehaviour
@@ -35,6 +35,7 @@ public class IntroBoatController : MonoBehaviour
     public Animator IntroRightHand;
     public Animator IntroLeftHand;
 
+    public Text DebugTxt;
     private IntroductionManager introductionManager;
     // Start is called before the first frame update
     void Start()
@@ -46,8 +47,8 @@ public class IntroBoatController : MonoBehaviour
     {
         float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
         transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
-      
 
+        DebugTxt.text = GameObject.Find("Main Camera").GetComponent<Transform>().localRotation.ToString();
 
     }
 
@@ -136,8 +137,8 @@ public class IntroBoatController : MonoBehaviour
                 IntroRightHand.SetBool("StartIntro", false);
                 IntroLeftHand.SetBool("StartIntro", false);
                 //让手消失
-                Destroy(IntroRightHand, 0.5f);
-                Destroy(IntroLeftHand, 0.5f);
+                Destroy(IntroRightHand.gameObject, 0.5f);
+                Destroy(IntroLeftHand.gameObject, 0.5f);
 
                 Left.material = normalMaterial;
                 Right.material = normalMaterial;

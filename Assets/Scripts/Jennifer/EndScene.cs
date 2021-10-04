@@ -69,7 +69,7 @@ public class EndScene : MonoBehaviour
             StartEndScene = true;
             //Play the ending
             
-            SoundManager.instance.PlayingSound("EndSceneBGM");
+            SoundManager.instance.PlayingSound("EndSceneBGM",3f);
             SoundManager.instance.StopPlayingMainBGM();
             StartEndScene = true;
         }
