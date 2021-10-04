@@ -41,16 +41,60 @@ public class IntroBoatController : MonoBehaviour
     }
     private void Update()
     {
- 
-        if (GameObject.Find("BoatManager").GetComponent<BoatMovingAdvance>().canMove)
+        float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
+        transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
+        if (!FirstForwardRide)
         {
-            float a = (Time.time - startTime) / (rotateAngle / rotateSpeed);
-            transform.localRotation = Quaternion.Slerp(startRotate, EndRoatate, a);
+            //播放闪光的paddle
+            //FlashPaddle();
+            //播放手的动画
+
         }
 
 
-
     }
+
+
+    //public Material FlashMaterial;
+    //public Material NorMalMaterial;
+    //private float flashTime = 3f;
+    //private float containTime = 1f;
+    //private bool changeMaterial = false;
+    //private float NowTime = 0;
+    //public void FlashPaddle()
+    //{
+    //    GameObject rp = GameObject.Find("right_Paddle");
+    //    GameObject lp = GameObject.Find("left_Paddle");
+    //    NowTime += Time.deltaTime;
+    //    if(!changeMaterial)
+    //    {
+    //        if(NowTime >= flashTime)
+    //        {
+    //            rp.GetComponent<Renderer>().material = FlashMaterial;
+    //            lp.GetComponent<Renderer>().material = FlashMaterial;
+    //            NowTime = 0;
+    //            changeMaterial = true;
+
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (NowTime >= containTime)
+    //        {
+    //            rp.GetComponent<Renderer>().material = NorMalMaterial;
+    //            lp.GetComponent<Renderer>().material = NorMalMaterial;
+    //            NowTime = 0;
+    //            changeMaterial = false;
+
+    //        }
+
+    //    }
+        
+    //}
+
+
+
+
 
     public void AddFroceOnBoat(string MovementName)
     {
@@ -121,6 +165,12 @@ public class IntroBoatController : MonoBehaviour
             //player's First Ride;
             if(!FirstForwardRide)
             {
+                RightPaddle.SetBool("rightRide", true);
+                LeftPaddle.SetBool("leftRide", true);
+                SoundManager.instance.PlayingSound("RowingRight");
+                SoundManager.instance.PlayingSound("RowingLeft");
+                StartCoroutine(EndRide(RightPaddle, "rightRide"));
+                StartCoroutine(EndRide(LeftPaddle, "leftRide"));
                 introductionManager.nowStage++;
                 FirstForwardRide = true;
             }

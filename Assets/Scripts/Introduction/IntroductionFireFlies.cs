@@ -7,15 +7,13 @@ public class IntroductionFireFlies : MonoBehaviour
     public Transform boatTransform;
     public float distance = 5f;
     private IntroductionManager introductionManager;
+    private bool onlyOnce = false;
 
-    private void Start()
-    {
-        boatTransform = GameObject.Find("BoatIntro").GetComponent<Transform>();
-        introductionManager = FindObjectOfType<IntroductionManager>();
-    }
     // Start is called before the first frame update
     private void OnEnable()
     {
+        boatTransform = GameObject.Find("BoatIntro").GetComponent<Transform>();
+        introductionManager = FindObjectOfType<IntroductionManager>();
         this.transform.position = boatTransform.position + boatTransform.forward * distance;
     }
 
@@ -23,7 +21,13 @@ public class IntroductionFireFlies : MonoBehaviour
     {
         if(other.tag == "Boat")
         {
-            introductionManager.nowStage++;
+            if (!onlyOnce)
+            {
+                onlyOnce = true;
+                introductionManager.nowStage++;
+                this.GetComponentInChildren<Fireflies>().AbsorbTheParticle("Boat");
+            }
+            
         }
     }
 }

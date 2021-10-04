@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class IntroductionLantern : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private IntroductionManager introductionManager;
+    private bool OneTimeIntro = false;
+    private void OnEnable()
     {
+        introductionManager = FindObjectOfType<IntroductionManager>();
         
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(!OneTimeIntro)
+        {
+            OneTimeIntro = true;
+            introductionManager.nowStage++;
+        }
+             
     }
 }

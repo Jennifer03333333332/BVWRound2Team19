@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroductionManager : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class IntroductionManager : MonoBehaviour
     {
         foreach(var item in introStages)
         {
-            if (item.ShowingThings) item.ShowingThings.SetActive(false);
+            if (item.ShowingThings) 
+            {
+                item.ShowingThings.SetActive(false);
+            }
         }
     }
 
@@ -35,6 +39,7 @@ public class IntroductionManager : MonoBehaviour
             generateStage++;
 
         }
+        EndScene();
     }
 
     IEnumerator SetIntroActive(int _generateStage)
@@ -43,4 +48,19 @@ public class IntroductionManager : MonoBehaviour
         introStages[_generateStage].ShowingThings.SetActive(true);
     }
 
+
+
+
+    private void EndScene()
+    {
+        if(generateStage == nowStage)
+        {
+            StartCoroutine(JumpToLevel1());   
+        }
+    }
+    IEnumerator JumpToLevel1()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Level1");
+    }
 }
