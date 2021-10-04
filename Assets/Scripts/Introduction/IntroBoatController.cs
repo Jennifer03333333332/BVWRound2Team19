@@ -32,6 +32,9 @@ public class IntroBoatController : MonoBehaviour
 
     public bool FirstForwardRide = false;
 
+    public Animator IntroRightHand;
+    public Animator IntroLeftHand;
+
     private IntroductionManager introductionManager;
     // Start is called before the first frame update
     void Start()
@@ -130,6 +133,12 @@ public class IntroBoatController : MonoBehaviour
             //player's First Ride;
             if(!FirstForwardRide)
             {
+                IntroRightHand.SetBool("StartIntro", false);
+                IntroLeftHand.SetBool("StartIntro", false);
+                //让手消失
+                Destroy(IntroRightHand, 0.5f);
+                Destroy(IntroLeftHand, 0.5f);
+
                 Left.material = normalMaterial;
                 Right.material = normalMaterial;
                 RightPaddle.SetBool("rightRide", true);
