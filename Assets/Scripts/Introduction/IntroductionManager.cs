@@ -12,13 +12,13 @@ public class IntroductionManager : MonoBehaviour
         public string DialogName;
     }
 
-    public IntroBoatMoving introBoatMoving;
-    public IntroBoatController introBoatController;
+
 
     public int generateStage = 0;
     public int nowStage = 0;
     public List<IntroductionStage> introStages = new List<IntroductionStage>();
 
+    public GameObject Canvas;
     private void Start()
     {
         foreach(var item in introStages)
@@ -28,8 +28,15 @@ public class IntroductionManager : MonoBehaviour
                 item.ShowingThings.SetActive(false);
             }
         }
+        StartCoroutine(DestroyTitle());
     }
 
+    IEnumerator DestroyTitle()
+    {
+        yield return new WaitForSeconds(3f);
+        Canvas.SetActive(false);
+      
+    }
     private void Update()
     {
         if(generateStage == nowStage && generateStage < introStages.Count)
