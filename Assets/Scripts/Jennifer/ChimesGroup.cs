@@ -28,6 +28,11 @@ public class ChimesGroup : MonoBehaviour
     public GameObject RingStick;
     private GameObject RingStickController;
     private GameObject BoatManager;
+
+    private GameObject LeftLotus;
+    private GameObject RightLotus;
+    private Material LitMaterial;
+
     private bool startThePuzzle;
     private int[] playerChoiceArr;
 
@@ -51,8 +56,12 @@ public class ChimesGroup : MonoBehaviour
         //TestField
         //WhenPlayerEntered();
         BoatStays = transform.position + new Vector3(-0.2f, 0, -0.1f);
+
+        LitMaterial = Resources.Load<Material>("LotusYellow1") as Material;
+        LeftLotus = gameObject.transform.Find("LeftLotus").gameObject;
+        RightLotus = gameObject.transform.Find("RightLotus").gameObject;
     }
-    
+
 
 
     IEnumerator WaitForTest()
@@ -118,6 +127,10 @@ public class ChimesGroup : MonoBehaviour
     IEnumerator BeginKnockBell()
     {
         print("BeginKnockBell");
+
+
+        //test
+        //SolvedBellPuzzle();//delete
         currentStep = 0;
         StartCoroutine("DelayRingStickCreate");
         while (currentStep < stepsCount)
@@ -229,8 +242,28 @@ public class ChimesGroup : MonoBehaviour
         //Absorb the particles
         gameObject.GetComponentInChildren<Fireflies>().SendMessage("AbsorbTheParticle","Lantern");
         SoundManager.instance.PlayingSound("PuzzleSolvedRewards");
+        //light the lotus
+        LotusControl();
     }
-
+    private void LotusControl()
+    {
+        if (LeftLotus)
+        {
+            Renderer[] rendererArr1 = LeftLotus.GetComponentsInChildren<Renderer>();
+            for (int i = 0; i < rendererArr1.Length; i++)
+            {
+                rendererArr1[i].material = LitMaterial;
+            }
+        }
+        if (RightLotus)
+        {
+            Renderer[] rendererArr2 = RightLotus.GetComponentsInChildren<Renderer>();
+            for (int i = 0; i < rendererArr2.Length; i++)
+            {
+                rendererArr2[i].material = LitMaterial;
+            }
+        }
+    }
 
     IEnumerator DelayRingStickCreate()
     {
