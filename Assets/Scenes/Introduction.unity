@@ -400,7 +400,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49843390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 311e793598b72754b87c40b3cb8c15e4, type: 3}
   m_Name: 
@@ -3587,8 +3587,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7319866523406426451, guid: 131ce86fddf1f1442a0a1e4bd1a1b464, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319866523406426451, guid: 131ce86fddf1f1442a0a1e4bd1a1b464, type: 3}
       propertyPath: m_RequestedTrackingOriginMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7319866523406426453, guid: 131ce86fddf1f1442a0a1e4bd1a1b464, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4170,8 +4174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d793ab11c07d34581c4f1b76d4b8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introBoatMoving: {fileID: 0}
-  introBoatController: {fileID: 0}
   generateStage: 0
   nowStage: 0
   introStages:

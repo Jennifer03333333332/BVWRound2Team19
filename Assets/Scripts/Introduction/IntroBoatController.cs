@@ -150,6 +150,7 @@ public class IntroBoatController : MonoBehaviour
                 StartCoroutine(EndRide(LeftPaddle, "leftRide"));
                 introductionManager.nowStage++;
                 FirstForwardRide = true;
+                //122324678rqhwur
             }
             rigidbody.AddForce(transform.forward * Speed, ForceMode.Impulse);
         }
